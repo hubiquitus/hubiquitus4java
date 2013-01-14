@@ -295,7 +295,7 @@ public class HClient {
 		if(messageDelegate == null){
 			throw new MissingAttrException("messageDelegate");
 		}
-		HMessage cmdMessage = buildCommand(actor, "hsubscribe",filter ,null, null);
+		HMessage cmdMessage = buildCommand(actor, "hsubscribe",null ,null, null);
 		cmdMessage.setTimeout(options.getMsgTimeout());
 		send(cmdMessage, messageDelegate);
 	}
@@ -309,11 +309,11 @@ public class HClient {
 	 * @throws MissingAttrException  raised if a mandatory attribute is not well provided
 	 */
     @SuppressWarnings("unused")
-	public void unsubscribe(String actor, HMessageDelegate messageDelegate) throws MissingAttrException {
+	public void unsubscribe( HMessageDelegate messageDelegate) throws MissingAttrException {
 		if(messageDelegate == null){
 			throw new MissingAttrException("messageDelegate");
 		}
-		HMessage cmdMessage = buildCommand(actor, "hunsubscribe",filter, null, null);
+		HMessage cmdMessage = buildCommand("session", "hunsubscribe",null, null, null);
 		cmdMessage.setTimeout(options.getMsgTimeout());
 		send(cmdMessage, messageDelegate);
 	}
@@ -367,7 +367,7 @@ public class HClient {
 		if(messageDelegate == null){
 			throw new MissingAttrException("messageDelegate");
 		}
-		HMessage cmdMessage = buildCommand(transportOptions.getHserverService(), "hgetsubscriptions", null,filter, null);
+		HMessage cmdMessage = buildCommand(transportOptions.getHserverService(), "hgetsubscriptions", null,null, null);
 		cmdMessage.setTimeout(options.getMsgTimeout());
 		this.send(cmdMessage, messageDelegate);
 	}
@@ -479,7 +479,7 @@ public class HClient {
 		if(messageDelegate == null){
 			throw new MissingAttrException("messageDelegate");
 		}
-		HMessage cmdMessage = buildCommand("session", "hSetFilter", filter, null, null);//TODO 
+		HMessage cmdMessage = buildCommand("session", "hSetFilter", filter, null, null);
 		this.filter = filter;
 		cmdMessage.setTimeout(options.getMsgTimeout());
 		this.send(cmdMessage, messageDelegate);

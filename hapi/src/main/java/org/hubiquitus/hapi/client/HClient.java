@@ -29,6 +29,7 @@ import java.util.Hashtable;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.UUID;
+import java.util.regex.Pattern;
 
 import org.hubiquitus.hapi.exceptions.MissingAttrException;
 import org.hubiquitus.hapi.hStructures.ConnectionError;
@@ -46,7 +47,6 @@ import org.hubiquitus.hapi.hStructures.HOptions;
 import org.hubiquitus.hapi.hStructures.HResult;
 import org.hubiquitus.hapi.hStructures.HStatus;
 import org.hubiquitus.hapi.hStructures.ResultStatus;
-import org.hubiquitus.hapi.structures.JabberID;
 import org.hubiquitus.hapi.transport.HTransport;
 import org.hubiquitus.hapi.transport.HTransportDelegate;
 import org.hubiquitus.hapi.transport.HTransportOptions;
@@ -85,8 +85,8 @@ public class HClient {
 
 	private TransportDelegate transportDelegate = new TransportDelegate();
 	
-    public String getFullJid() {
-		return this.transportOptions.getJid().getFullJID();
+    public String getFullUrn() {
+		return this.transportOptions.getFullUrn();
 	}
 
 
@@ -104,12 +104,12 @@ public class HClient {
 
 	/**
 	 * Establishes a connection to hNode to allow the reception and sending of messages and commands.
-	 * @param publisher : user jid (ie : my_user@domain/resource). Mandatory.
+	 * @param publisher : user urn (ie : urn:domai:username). Mandatory.
 	 * @param password : Mandatory.
 	 * @param options : Complementary values used for the connection to the server. Not mandatory.
 	 */
     @SuppressWarnings("unused")
-	public void connect(String publisher, String password, HOptions options) {
+	public void connect(String login, String password, HOptions options) {
 		boolean shouldConnect = false;
 		boolean connInProgress = false;
 		boolean disconInProgress = false;
@@ -136,11 +136,11 @@ public class HClient {
 			this.notifyStatus(ConnectionStatus.CONNECTING, ConnectionError.NO_ERROR, null);
 
 			// fill HTransportOptions
-			try {
-				this.fillHTransportOptions(publisher, password, options);
-			} catch (Exception e) {
+			if(Pattern.matches(HUtil.URN_REGEX, login)) {
+				this.fillHTransportOptions(login, password, options);
+			} else{
 				// stop connecting if filling error
-				this.notifyStatus(ConnectionStatus.DISCONNECTED, ConnectionError.JID_MALFORMAT, e.getMessage());
+				this.notifyStatus(ConnectionStatus.DISCONNECTED, ConnectionError.URN_MALFORMAT, null);
 				return;
 			}
 
@@ -227,7 +227,7 @@ public class HClient {
 	 * The hserver will perform one of the following actions :
 	 *  (1). If the actor is a channel (ie : #channelName@domain) the hserver will perform a publish operation of the provided hMessage to the channel and send an hMessage with hResult payload containing the published message and cmd name set with hsend to acknowledge publishing only if a timeout value has been provided.
 	 *  (2). If the actor is either ‘session’ and payload type is ‘hCommand’ the server will handle it. In other cases, it will send an hMessage with a hResult error NOT_AUTHORIZED. Only if the timeout is provided.
-	 *  (3). If the actor is a jid, hserver will relay the message to the relevant actor.
+	 *  (3). If the actor is a urn, hserver will relay the message to the relevant actor.
 	 * @param message : The message to send. Mandatory.
 	 * @param messageDelegate : If provided, called by the hAPI when the first message refering to current message arrive . Not mandatory.
 	 */
@@ -245,7 +245,7 @@ public class HClient {
 			return;
 		}
 		message.setSent(new DateTime());
-		message.setPublisher(transportOptions.getJid().getBareJID());
+		message.setPublisher(transportOptions.getFullUrn());
 		if (message.getTimeout() > 0) {
 			// hAPI will do correlation. If no answer within the
 			// timeout, a timeout error will be sent.
@@ -518,8 +518,8 @@ public class HClient {
 			hmessage.setPublished(options.getPublished());
 			hmessage.setTimeout(options.getTimeout());
 		}
-		if (transportOptions != null && transportOptions.getJid() != null) {
-			hmessage.setPublisher(transportOptions.getJid().getBareJID());
+		if (transportOptions != null && transportOptions.getUrn() != null) {
+			hmessage.setPublisher(transportOptions.getFullUrn());
 		} else {
 			hmessage.setPublisher(null);
 		}
@@ -781,16 +781,13 @@ public class HClient {
 	/* HTransportCallback functions */
 
 	/**
-	 * fill htransport, randomly pick an endpoint from availables endpoints. By default it uses options server host to fill serverhost field and as fallback jid domain
-	 * @param publisher : publisher as jid format (my_user@serverhost.com/my_resource)
+	 * fill htransport, randomly pick an endpoint from availables endpoints. By default it uses options server host to fill serverhost field and as fallback urn domain
+	 * @param login : publisher as urn format (urn:domain:username)
 	 * @param password the password to open the a session with the hnode
 	 * @param options options to open a session
-	 * @throws Exception : in case jid is malformatted, it throws an exception
 	 */
-	private void fillHTransportOptions(String publisher, String password, HOptions options) throws Exception {
-		JabberID jid = new JabberID(publisher);
-
-		this.transportOptions.setJid(jid);
+	private void fillHTransportOptions(String login, String password, HOptions options) {
+		this.transportOptions.setUrn(login);
 		this.transportOptions.setPassword(password);
 		this.transportOptions.setAuthCB(options.getAuthCB());
 		this.transportOptions.setTimeout(options.getTimeout());

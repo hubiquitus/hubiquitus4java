@@ -54,15 +54,13 @@ import org.hubiquitus.hapi.hStructures.HStatus;
 import org.hubiquitus.hapi.hStructures.OperandNames;
 import org.hubiquitus.hapi.transport.socketio.ConnectedCallback;
 import org.hubiquitus.hapi.transport.socketio.HAuthCallback;
-import org.joda.time.DateTime;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
  * 
  * @author speed
- * @version 0.3 The panel for this example
+ * @version 0.5 The panel for this example
  */
 
 @SuppressWarnings("serial")
@@ -73,8 +71,8 @@ public class MainPanel extends JPanel implements HStatusDelegate,
 
 	private HOptions option = new HOptions();
 
-	private JTextField usernameField = new JTextField("u1@localhost");
-	private JTextField passwordField = new JTextField("u1");
+	private JTextField usernameField = new JTextField("urn:localhost:u1");
+	private JTextField passwordField = new JTextField("urn:localhost:u1");
 	private JTextField endPointField = new JTextField("http://localhost:8080");
 	private JTextField actorField = new JTextField("#test@localhost");
 	private JTextField messageField = new JTextField("test");
@@ -367,11 +365,13 @@ public class MainPanel extends JPanel implements HStatusDelegate,
 				channelToCreate.put("owner", usernameField.getText());
 				JSONArray jsonArray = new JSONArray();
 				jsonArray.put(usernameField.getText());
-				jsonArray.put("u2@localhost");
+				jsonArray.put("u1@hub.novediagroup.com");
+				jsonArray.put("u2@hub.novediagroup.com");
 				channelToCreate.put("subscribers", jsonArray);
 				channelToCreate.put("active", true);
-				HMessage message = client.buildCommand("hnode@localhost.com",
-						"hcreateupdatechannel", channelToCreate, null);
+				HMessage message = client.buildCommand("hnode@hub.novediagroup.com",
+						"hCreateUpdateChannel", channelToCreate, null);
+				message.setTimeout(30000);
 				client.send(message, outerClass);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -583,6 +583,9 @@ public class MainPanel extends JPanel implements HStatusDelegate,
 
 	@Override
 	public void onStatus(HStatus status) {
+		System.out.println("--> status : " + status.getStatus());
+		System.out.println("--> fullUrn : " + client.getFullUrn());
+		System.out.println("--> resource : " + client.getResource());
 		this.setStatusArea("hstatus");
 		this.addTextArea(status.toString());
 		if (status.getErrorCode() == ConnectionError.NO_ERROR

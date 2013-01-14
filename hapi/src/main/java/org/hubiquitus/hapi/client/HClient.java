@@ -113,9 +113,10 @@ public class HClient {
 	 * @param publisher : user urn (ie : urn:domai:username). Mandatory.
 	 * @param password : Mandatory.
 	 * @param options : Complementary values used for the connection to the server. Not mandatory.
+	 * @param context : Not mandatory.
 	 */
     @SuppressWarnings("unused")
-	public void connect(String login, String password, HOptions options) {
+	public void connect(String login, String password, HOptions options, JSONObject context) {
 		boolean shouldConnect = false;
 		boolean connInProgress = false;
 		boolean disconInProgress = false;
@@ -143,7 +144,7 @@ public class HClient {
 
 			// fill HTransportOptions
 			if(Pattern.matches(HUtil.URN_REGEX, login)) {
-				this.fillHTransportOptions(login, password, options);
+				this.fillHTransportOptions(login, password, options, context);
 			} else{
 				// stop connecting if filling error
 				this.notifyStatus(ConnectionStatus.DISCONNECTED, ConnectionError.URN_MALFORMAT, null);
@@ -174,6 +175,17 @@ public class HClient {
 			}
 		}
 	}
+    
+    
+    /**
+	 * Establishes a connection to hNode to allow the reception and sending of messages and commands.
+	 * @param publisher : user urn (ie : urn:domai:username). Mandatory.
+	 * @param password : Mandatory.
+	 * @param options : Complementary values used for the connection to the server. Not mandatory.
+	 */
+    public void connect(String login, String password, HOptions options){
+    	this.connect(login, password, options, null);
+    }
 
 	/**
 	 * Disconnect the user from the current working session.
@@ -793,12 +805,12 @@ public class HClient {
 	 * @param password the password to open the a session with the hnode
 	 * @param options options to open a session
 	 */
-	private void fillHTransportOptions(String login, String password, HOptions options) {
+	private void fillHTransportOptions(String login, String password, HOptions options, JSONObject context) {
 		this.transportOptions.setUrn(login);
 		this.transportOptions.setPassword(password);
 		this.transportOptions.setAuthCB(options.getAuthCB());
 		this.transportOptions.setTimeout(options.getTimeout());
-
+		this.transportOptions.setContext(context);
 		// by default we user server host rather than publish host if defined
 
 		// for endpoints, pick one randomly and fill htransport options

@@ -26,6 +26,7 @@
 package org.hubiquitus.hapi.transport;
 
 import org.hubiquitus.hapi.transport.socketio.HAuthCallback;
+import org.json.JSONObject;
 
 /** 
  * @cond internal
@@ -46,6 +47,7 @@ public class HTransportOptions {
 	private String hserver = "hnode";
 	private HAuthCallback authCB = null;
 	private int timeout = 0;
+	private JSONObject context = null;
 	
 	public HTransportOptions() {
 		super();
@@ -89,7 +91,14 @@ public class HTransportOptions {
 	public void setUsername(String username){
 		this.username = username;
 	}
+
+	public JSONObject getContext(){
+		return this.context;
+	}
 	
+	public void setContext(JSONObject context){
+		this.context = context;
+	}
 	/**
 	 * @return hserver service name (by default it should be "hnode.domain")
 	 */

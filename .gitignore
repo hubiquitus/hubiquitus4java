@@ -5,6 +5,8 @@
 *.war
 *.ear
 
+logger.txt
+
 target/
 
 *.pydevproject

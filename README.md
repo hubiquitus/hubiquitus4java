@@ -10,11 +10,11 @@ Recently, Hubiquitus added four components : HTwitterAPI-1.1, HFacebook, HGoogle
 
 The "Bots" folder content five samples bots :
 
-* TwitterBot allows to retrive data from twitter and post a tweets
-* HFacebookBot allows to retrive data from facebook
-* HInstagramBot allows to retrive data from instagram 
-* HelloBot allows to retrive a string and publish it on a node
-* HttpBot allows to retrive data from RSS feed
+* TwitterBot allows to retrive data from twitter and post a tweets [[README]](https://github.com/maniadel/hubiquitus4java/blob/master/Bots/TwitterBot/README.md)
+* HFacebookBot allows to retrive data from facebook [[README]](https://github.com/maniadel/hubiquitus4java/blob/master/Bots/FacebookBot/README.md)
+* HInstagramBot allows to retrive data from instagram [[README]](https://github.com/maniadel/hubiquitus4java/blob/master/Bots/InstagramBot/README.md)
+* HelloBot allows to retrive a string and publish it on a node [[README]](https://github.com/maniadel/hubiquitus4java/blob/master/Bots/HelloBot/README.md)
+* HelloHttpBot allows to retrive data from RSS feed [[README]](https://github.com/maniadel/hubiquitus4java/blob/master/Bots/HelloHttpBot/README.md)
 
 
 The "HubiquitusComponents" folder content three components :
@@ -32,4 +32,6 @@ The "Examples" folder content a sample exemples as :
 * HGooglePlus Simple client allows to retrive data from Instagram using HGooglePlus
 
 
-To **run** your first bot, please read the following file : INSTALLATION.md
+To **run** your first bot, please read the following file : [INSTALLATION.md](https://github.com/maniadel/hubiquitus4java/blob/master/doc/INSTALLATION.md)
+
+For more informations, please read the following wiki :  [HOME.md](https://github.com/maniadel/hubiquitus4java/blob/master/doc/HOME.md)

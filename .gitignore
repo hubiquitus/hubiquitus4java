@@ -6,6 +6,7 @@
 *.ear
 
 logger.txt
+*.log.*
 
 target/
 

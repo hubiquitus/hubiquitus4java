@@ -25,14 +25,14 @@ public class HGPlusActicitySimpleClient implements HGooglePlusActivityListners
 	public static void main( String[] args )
     {		
 		HGooglePlusActivity gPClientActivity = new HGooglePlusActivity(
-					"192.168.102.84", 		                   // yourProxyHost if any
-					3128,			                           // yourProxyPort if any
+					"", 		                   // yourProxyHost if any
+					0,			                           // yourProxyPort if any
 					"obama",	                               // GooglePlus page name or Id page
 					 null,                                     //langage
 					 20,                                       //max results
 					null,	                                   // orderBy ie 'best' 
 					12000,                                      // On milliseconds refresh rate
-				    "AIzaSyDpnjbOy1_ZLCoCj-yLg1sdphRiQ6QEvcQ"  //API Key
+				    ""  //API Key
 				);		
 		gPClientActivity.addListener(new HGPlusActicitySimpleClient());
 		gPClientActivity.start();

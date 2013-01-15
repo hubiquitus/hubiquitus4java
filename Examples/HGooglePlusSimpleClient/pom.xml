@@ -2,13 +2,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.hubiquitus.hubiquitus4j</groupId>
+	<groupId>org.hubiquitus.hubiquitus4java.components.sample</groupId>
 	<artifactId>HGooglePlusSimpleClient</artifactId>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
 
 	<name>HGooglePlusSimpleClient</name>
-	<url>http://maven.apache.org</url>
 
 	<build>
 		<plugins>
@@ -60,7 +59,7 @@
 		</dependency>
 		
 		<dependency>
-			<groupId>org.hubiquitus.hubiquitus4j.hgoogleplus</groupId>
+			<groupId>org.hubiquitus.hubiquitus4java.components</groupId>
 			<artifactId>HGooglePlus</artifactId>
 			<version>1.0.0</version>
 		</dependency>

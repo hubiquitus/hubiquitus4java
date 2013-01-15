@@ -379,7 +379,7 @@ public class HClient {
 		if(messageDelegate == null){
 			throw new MissingAttrException("messageDelegate");
 		}
-		HMessage cmdMessage = buildCommand(transportOptions.getHserverService(), "hgetsubscriptions", null,null, null);
+		HMessage cmdMessage = buildCommand("session", "hgetsubscriptions", null,null, null);
 		cmdMessage.setTimeout(options.getMsgTimeout());
 		this.send(cmdMessage, messageDelegate);
 	}
@@ -537,7 +537,7 @@ public class HClient {
 			hmessage.setPublished(options.getPublished());
 			hmessage.setTimeout(options.getTimeout());
 		}
-		if (transportOptions != null && transportOptions.getUrn() != null) {
+		if (transportOptions != null && transportOptions.getFullUrn() != null) {
 			hmessage.setPublisher(transportOptions.getFullUrn());
 		} else {
 			hmessage.setPublisher(null);

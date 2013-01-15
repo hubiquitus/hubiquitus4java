@@ -42,8 +42,8 @@ public class FaceBookSimpleClient implements HFacebookListners
 	public static void main( String[] args )
     {		
 		GetLikeFacebook glfb = new GetLikeFacebook(
-					"192.168.102.84", 		// yourProxyHost if any
-					3128,			// yourProxyPort if any
+					null, 		// yourProxyHost if any
+					0,			// yourProxyPort if any
 					"cocacola",	// facebook page name
 					2000);		// On milliseconds refresh rate
 		glfb.addListener(new FaceBookSimpleClient());

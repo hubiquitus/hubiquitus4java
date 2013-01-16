@@ -37,6 +37,7 @@
     </properties>
 
     <build>
+        <pluginManagement>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -49,7 +50,7 @@
                 </configuration>
             </plugin>
 
-           <!--  <plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
                 <version>2.6</version>
@@ -68,11 +69,12 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin> -->
+            </plugin>
 
 
 
         </plugins>
+        </pluginManagement>
     </build>
 
   <dependencies>

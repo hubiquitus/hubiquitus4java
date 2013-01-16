@@ -5,6 +5,9 @@
 *.war
 *.ear
 
+logger.txt
+*.log.*
+
 target/
 
 logger.txt
@@ -38,6 +41,7 @@ local.properties
 .buildpath
 
 *.iml
+*.log
 *.ipr
 *.iws
 .idea/

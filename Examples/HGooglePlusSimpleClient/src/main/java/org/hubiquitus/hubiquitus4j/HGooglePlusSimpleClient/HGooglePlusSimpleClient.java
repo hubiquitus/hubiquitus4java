@@ -21,11 +21,11 @@ public class HGooglePlusSimpleClient implements HGooglePlusListners
 	public static void main( String[] args )
     {		
 		HGooglePlus googlePlusClient = new HGooglePlus(
-					"192.168.102.84", 		              // yourProxyHost if any
-					3128,			                      // yourProxyPort if any
+					"", 		              // yourProxyHost if any
+					0,			                      // yourProxyPort if any
 					"+Coca-cola",	                      // GooglePlus page name or Id page
 					15000,                                // On milliseconds refresh rate
-				    "AIzaSyDpnjbOy1_ZLCoCj-yLg1sdphRiQ6QEvcQ"	//API Key
+				    ""	//API Key
 				);		
 		googlePlusClient.addListener(new HGooglePlusSimpleClient());
 		googlePlusClient.start();

@@ -28,6 +28,8 @@ package org.hubiquitus.hapi.test;
 
 import static org.junit.Assert.fail;
 
+import java.util.Date;
+
 import org.hubiquitus.hapi.hStructures.ConnectionError;
 import org.hubiquitus.hapi.hStructures.ConnectionStatus;
 import org.hubiquitus.hapi.hStructures.HAck;
@@ -47,7 +49,6 @@ import org.hubiquitus.hapi.hStructures.HStatus;
 import org.hubiquitus.hapi.hStructures.HValue;
 import org.hubiquitus.hapi.hStructures.OperandNames;
 import org.hubiquitus.hapi.hStructures.ResultStatus;
-import org.joda.time.DateTime;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -79,8 +80,8 @@ public class HStructureTest {
 			
 			jsonObj.put("priority", 1);
 			
-			DateTime date = new DateTime();
-			jsonObj.put("relevance", date);
+			Date date = new Date();
+			jsonObj.put("relevance", date.getTime());
 			
 			Boolean _persistent = false;
 			jsonObj.put("persistent", _persistent);
@@ -97,7 +98,7 @@ public class HStructureTest {
 			String publisher = "j.desousag";
 			jsonObj.put("publisher", publisher);
 			
-			jsonObj.put("published", date);
+			jsonObj.put("published", date.getTime());
 
 			JSONObject headers = new JSONObject();
 			headers.put("header1", "1");
@@ -124,8 +125,8 @@ public class HStructureTest {
 			Assert.assertEquals(hmessage.getLocation().toString(), location.toString());
 			Assert.assertEquals(hmessage.getPayloadAsJSONObject().toString(), payloadResult.toString());
 			Assert.assertEquals(hmessage.getPriority(), HMessagePriority.INFO);
-			Assert.assertEquals(hmessage.getPublished().toString(), date.toString());
-			Assert.assertEquals(hmessage.getRelevance().toString(), date.toString());
+			Assert.assertEquals(hmessage.getPublished(), date.getTime());
+			Assert.assertEquals(hmessage.getRelevance(), date.getTime());
 			Assert.assertEquals(hmessage.getPersistent(), _persistent);
 			
 		} catch (JSONException e) {
@@ -148,7 +149,7 @@ public class HStructureTest {
 			
 			HMessagePriority priority = HMessagePriority.INFO;
 			
-			DateTime date = new DateTime();
+			Date date = new Date();
 			
 			Boolean _persistent = false;
 			
@@ -202,8 +203,8 @@ public class HStructureTest {
 			Assert.assertEquals(jsonObj.get("location").toString(), location.toString());
 			Assert.assertEquals(jsonObj.get("payload"), payload);
 			Assert.assertEquals(jsonObj.get("priority"), priority.value());
-			Assert.assertEquals(jsonObj.get("published").toString(), date.toString());
-			Assert.assertEquals(jsonObj.get("relevance").toString(), date.toString());
+			Assert.assertEquals(jsonObj.get("published"), date.getTime());
+			Assert.assertEquals(jsonObj.get("relevance"), date.getTime());
 			Assert.assertEquals(jsonObj.get("persistent"), _persistent);
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -27,9 +27,9 @@
 
 package org.hubiquitus.hubiquitus4j.HInstagramAPI.HInstagramSimpleClient;
 
-import org.hubiquitus.hubiquitus4j.HInstagramAPI.HInstagramAPI.GetInstagramTags;
-import org.hubiquitus.hubiquitus4j.HInstagramAPI.HInstagramAPI.InstagStatus;
-import org.hubiquitus.hubiquitus4j.HInstagramAPI.HInstagramAPI.InstagramTagsListners;
+import org.hubiquitus.hubiquitus4j.HInstagramAPI.GetInstagramTags;
+import org.hubiquitus.hubiquitus4j.HInstagramAPI.InstagStatus;
+import org.hubiquitus.hubiquitus4j.HInstagramAPI.InstagramTagsListners;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

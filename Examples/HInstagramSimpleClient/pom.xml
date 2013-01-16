@@ -100,7 +100,7 @@
 		</dependency>
 		
 		<dependency>
-			<groupId>org.hubiquitus.hubiquitus4j.HInstagramAPI</groupId>
+			<groupId>org.hubiquitus.hubiquitus4j.hinstagramAPI</groupId>
 			<artifactId>HInstagramAPI</artifactId>
 			<version>1.0.0</version>
 		</dependency>

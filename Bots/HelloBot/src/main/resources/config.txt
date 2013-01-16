@@ -1,10 +1,10 @@
 {
 "type" : "com.mycompany.WordCount",
-"actor" : "u1@localhost",
-"pwd" : "u1",
+"actor" : "urn:localhost:u1",
+"pwd" : "urn:localhost:u1",
 "hserver" : "http://localhost:8080",
 "adapters" : [{
-				"actor" : "#test@localhost"
+				"actor" : "urn:localhost:testChannel"
 			}
 			]
 }

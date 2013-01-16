@@ -1,45 +1,43 @@
 {
 	"type" : "com.mycompany.WordCount",
-	"actor" : "user1@localhost",
-	"pwd" : "user1Password",
+	"actor" : "urn:localhost:***",
+	"pwd" : "***",
 	"hserver" : "http://localhost:8080",
 	"properties" : {
-		"screenName" : "UserTwitter"
+		"screenName" : "***"
 	},
 	"adapters" : [ 
 		{
-			"actor" : "UserTwitter@twitter.com", 
+			"actor" : "twitter_inbox", 
 			"type" :  "org.hubiquitus.hubotsdk.adapters.HTwitterAdapterInbox_1_1", 
-
 			"properties" : {
 
 				"proxyHost":"0.0.0.0",
 				"proxyPort":0000,
-				"consumerKey" : "yourConsumerKey",
-				"consumerSecret" : "yourConsumerSecret",
-				"twitterAccessToken" : "yourAccesToken",
-				"twitterAccessTokenSecret" : "yourAccessTokenSecret",
+				"consumerKey" : "***",
+				"consumerSecret" : "***",
+				"twitterAccessToken" : "***",
+				"twitterAccessTokenSecret" : "***",
 
-				"tags" : "novedia,maniadel",
+				"tags" : "novedia",
 				"stallWarnings" :"true",
-				"delimited" ="all",
-				"replies"="all",
-				"langFilter" : "en"
+				"delimited":"all",
+				"replies":"all",
+				"langFilter" : "fr"
 
 			}			
-
 		},
 		{
 
-			"actor" : "twitterOutbox@twitter.com",
-			"type" :  "type" :  "org.hubiquitus.hubotsdk.adapters.HTwitterAdapterOutbox_1_1",
+			"actor" : "twitter_outbox",
+			"type" : "org.hubiquitus.hubotsdk.adapters.HTwitterAdapterOutbox_1_1",
 			"properties" : {
 				"proxyHost":"0.0.0.0",
-				"proxyPort":0000,
-				"consumerKey" : "yourConsumerKey",
-				"consumerSecret" : "yourConsumerSecret",
-				"twitterAccessToken" : "yourAccesToken",
-				"twitterAccessTokenSecret" : "yourAccessTokenSecret"
+				"proxyPort":000,
+				"consumerKey" : "***",
+				"consumerSecret" : "***",
+				"twitterAccessToken" : "***",
+				"twitterAccessTokenSecret" : "***"
 			}
 		}
 	]

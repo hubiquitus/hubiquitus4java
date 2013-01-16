@@ -70,7 +70,7 @@ public class HChannelAdapterInbox extends AdapterInbox {
 	@Override
 	public void stop() {
         try {
-		    hclient.unsubscribe(actor, localDelegate);
+		    hclient.unsubscribe(localDelegate);
         } catch (MissingAttrException e) {
             log.warn("error while stopping : ",e);
         }

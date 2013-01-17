@@ -25,7 +25,7 @@
 
 	<groupId>org.hubiquitus.hubiquitus4java.samples</groupId>
 	<artifactId>TwitterBot</artifactId>
-	<version>0.5.5</version>
+	<version>1.0.0</version>
 
 	<name>TwitterHelloBot</name>
 
@@ -76,12 +76,12 @@
 		<dependency>
 			<groupId>org.hubiquitus.hubiquitus4java</groupId>
 			<artifactId>HubotsSDK</artifactId>
-			<version>0.5.5</version>
+			<version>0.6</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hubiquitus.hubiquitus4java</groupId>
 			<artifactId>hAPI</artifactId>
-			<version>0.5.5</version>
+			<version>0.6</version>
 		</dependency>
 		<!--dependency>
 			<groupId>org.json.jar</groupId>

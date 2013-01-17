@@ -24,7 +24,7 @@
 
 	<groupId>org.hubiquitus.hubiquitus4j</groupId>
 	<artifactId>HelloHttpBot</artifactId>
-	<version>0.3.11</version>
+	<version>1.0.0</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -71,13 +71,13 @@
 		<dependency>
 			<groupId>org.hubiquitus.hubiquitus4java</groupId>
 			<artifactId>HubotsSDK</artifactId>
-			<version>0.5.5</version>
+			<version>0.6</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.hubiquitus.hubiquitus4java</groupId>
 			<artifactId>hAPI</artifactId>
-			<version>0.5.5</version>
+			<version>0.6</version>
 		</dependency>
         <!--dependency>
               <groupId>org.json.jar</groupId>

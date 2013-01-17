@@ -30,7 +30,7 @@
 
   <groupId>org.hubiquitus.hubiquitus4java</groupId>
   <artifactId>hAPI</artifactId>
-  <version>0.5.5</version>
+  <version>0.6</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

@@ -88,7 +88,6 @@ public class MainPanel extends JPanel implements HStatusDelegate,
 	private JButton connectButton = new JButton("Connect");
 	private JButton disconnectButton = new JButton("Disconnect");
 	private JButton sendButton = new JButton("send");
-	private JButton createChannelButton = new JButton("createChannel");
 	private JButton subscribeButton = new JButton("subscribe");
 	private JButton unsubscribeButton = new JButton("unsubscribe");
 	// private JButton publishButton = new JButton("publish");
@@ -188,7 +187,6 @@ public class MainPanel extends JPanel implements HStatusDelegate,
 		controlsPanel.add(connectButton);
 		controlsPanel.add(disconnectButton);
 		controlsPanel.add(sendButton);
-		controlsPanel.add(createChannelButton);
 		controlsPanel.add(subscribeButton);
 		controlsPanel.add(unsubscribeButton);
 		// controlsPanel.add(publishButton);
@@ -224,7 +222,6 @@ public class MainPanel extends JPanel implements HStatusDelegate,
 		connectButton.addMouseListener(new ConnectionButtonListener());
 		disconnectButton.addMouseListener(new DisconnectionButtonListener());
 		sendButton.addMouseListener(new SendButtonListener());
-		createChannelButton.addMouseListener(new CreateChannelButtonListener());
 		subscribeButton.addMouseListener(new SubscribeButtonListener());
 		unsubscribeButton.addMouseListener(new UnsubscribeButtonListener());
 		// publishButton.addMouseListener(new PublishButtonListener());
@@ -355,29 +352,6 @@ public class MainPanel extends JPanel implements HStatusDelegate,
 		}
 	}
 
-	class CreateChannelButtonListener extends MouseAdapter {
-		public void mouseClicked(MouseEvent event) {
-			JSONObject channelToCreate = new JSONObject();
-
-			try {
-				channelToCreate.put("type", "channel");
-				channelToCreate.put("actor", actorField.getText());
-				channelToCreate.put("owner", usernameField.getText());
-				JSONArray jsonArray = new JSONArray();
-				jsonArray.put(usernameField.getText());
-				jsonArray.put("u1@hub.novediagroup.com");
-				jsonArray.put("u2@hub.novediagroup.com");
-				channelToCreate.put("subscribers", jsonArray);
-				channelToCreate.put("active", true);
-				HMessage message = client.buildCommand("hnode@hub.novediagroup.com",
-						"hCreateUpdateChannel", channelToCreate,null, null);
-				message.setTimeout(30000);
-				client.send(message, outerClass);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-	}
 
 	// Listener of button clean
 	class CleanButtonListener extends MouseAdapter {
@@ -403,7 +377,7 @@ public class MainPanel extends JPanel implements HStatusDelegate,
 	class UnsubscribeButtonListener extends MouseAdapter {
 		public void mouseClicked(MouseEvent event) {
 			try {
-				client.unsubscribe(outerClass);
+				client.unsubscribe(actorField.getText(), outerClass);
 			} catch (MissingAttrException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -504,8 +478,8 @@ public class MainPanel extends JPanel implements HStatusDelegate,
 			 HArrayOfValue values = new HArrayOfValue();
 			 values.setName("publisher");
 			 JSONArray jsonArray = new JSONArray();
-			 jsonArray.put("u1@localhost");
-			 jsonArray.put("u2@localhost");
+			 jsonArray.put("urn:localhost:u1");
+			 jsonArray.put("urn:localhost:u2");
 			 values.setValues(jsonArray);
 			 filter.setValueArray(OperandNames.IN, values);
 			 try {

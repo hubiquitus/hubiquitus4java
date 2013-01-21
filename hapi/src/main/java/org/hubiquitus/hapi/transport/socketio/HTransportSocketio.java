@@ -294,10 +294,10 @@ public class HTransportSocketio implements HTransport, IOCallback {
 	public void onConnect() {
 		if(shouldConnect){
 			if(authCB != null){
-				authCB.authCb(options.getUrn(), connectedCB);
+				authCB.authCb(options.getLogin(), connectedCB);
 			}
 			else{
-				connectedCB.connect(options.getUrn(), options.getPassword());
+				connectedCB.connect(options.getLogin(), options.getPassword());
 			}
 		}
 	}

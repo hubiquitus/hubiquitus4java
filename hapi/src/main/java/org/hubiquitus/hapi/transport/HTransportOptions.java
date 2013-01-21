@@ -35,11 +35,10 @@ import org.json.JSONObject;
  */
 
 public class HTransportOptions {
-	private String urn = null;
+	private String login = null;
 	private String fullUrn = null;
 	private String domain = null;
 	private String resource = null;
-	private String username = null;
 	private String password = null;
 	private String endpointHost = null;
 	private int endpointPort = 0;
@@ -61,6 +60,7 @@ public class HTransportOptions {
 
 	public void setFullUrn(String fullUrn) {
 		this.fullUrn = fullUrn;
+		setDomain(fullUrn.split(":")[1]);
 		setResource(fullUrn.split(":")[2].split("/")[1]);
 	}
 
@@ -84,14 +84,6 @@ public class HTransportOptions {
 		this.resource = resource;
 	}
 	
-	public String getUsername(){
-		return this.username;
-	}
-	
-	public void setUsername(String username){
-		this.username = username;
-	}
-
 	public JSONObject getContext(){
 		return this.context;
 	}
@@ -99,38 +91,17 @@ public class HTransportOptions {
 	public void setContext(JSONObject context){
 		this.context = context;
 	}
-	/**
-	 * @return hserver service name (by default it should be "hnode.domain")
-	 */
-	public String getHserverService() {
-		String nodeService = null;
-		
-		if(this.urn != null) {
-			nodeService = this.hserver + "@" + this.domain;
-		}
-		
-		return nodeService;
-	}
-	
-	/**
-	 * @return pubsub service name (by default it should be "pubsub")
-	 */
-	public String getPubsubService() {
-		return "pubsub" + "." + this.domain;
-	}
 	
 	/**
 	 * @return user urn (ie : urn:domaine:username)
 	 */
-	public String getUrn() {
-		return urn;
+	public String getLogin() {
+		return login;
 	}
 
 
-	public void setUrn(String urn) {
-		this.urn = urn;
-		setDomain(urn.split(":")[1]);
-		setUsername(urn.split(":")[2]);
+	public void setLogin(String login) {
+		this.login = login;
 	}
 
 

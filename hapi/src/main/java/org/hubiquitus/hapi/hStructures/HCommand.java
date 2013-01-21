@@ -53,6 +53,17 @@ public class HCommand extends JSONObject {
 		setParams(params);
 		setFilter(filter);
 	}
+	
+	public HCommand(String cmd, String params, HCondition filter){
+		this();
+		try {
+			setCmd(cmd);
+		} catch (MissingAttrException e) {
+			logger.error("message: ", e);
+		}
+		setParams(params);
+		setFilter(filter);
+	}
 
 	public HCommand(JSONObject jsonObj) throws JSONException {
 		super(jsonObj.toString());
@@ -99,6 +110,18 @@ public class HCommand extends JSONObject {
 	}
 
 	public void setParams(JSONObject params) {
+		try {
+			if (params == null) {
+				this.remove("params");
+			} else {
+				this.put("params", params);
+			}
+		} catch (JSONException e) {
+			logger.warn("message: ", e);
+		}
+	}
+	
+	public void setParams(String params){
 		try {
 			if (params == null) {
 				this.remove("params");

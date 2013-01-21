@@ -167,18 +167,18 @@ public abstract class Hubot {
 		// Create instance of all Adapter
 		
 		if(adapters != null) {
-			ArrayList<String> listJid = new ArrayList<String>();
+			ArrayList<String> listAdapters = new ArrayList<String>();
 				for(int i=0; i< adapters.length(); i++) {
 					HAdapterConf adapterConf;
 					try {
 						adapterConf = new HAdapterConf(adapters.getJSONObject(i));
-						String targetActorId = adapterConf.getActor();
+						String targetActorId = adapterConf.getTargetActorId();
 						
-						if(listJid.contains(targetActorId)){
-							logger.error("Adapter's actor attribute is already used: " + adapterConf.getActor());
+						if(listAdapters.contains(targetActorId)){
+							logger.error("Adapter's actor attribute is already used: " + adapterConf.getTargetActorId());
 							return false;
 						}
-						listJid.add(targetActorId);
+						listAdapters.add(targetActorId);
 					} catch (Exception e) {
 						logger.info("message: ", e);
 						return false;
@@ -235,7 +235,7 @@ public abstract class Hubot {
 					if(adapterConf != null){
 						if (adapterConf.getType() == null) { //ChannelAdapterInbox
 							HChannelAdapterInbox channelAdapterInbox = new HChannelAdapterInbox();
-							channelAdapterInbox.setActor(adapterConf.getActor());
+							channelAdapterInbox.setActor(adapterConf.getTargetActorId());
 							channelAdapterInbox.setProperties(adapterConf.getProperties());
 							channelAdapterInbox.setHClient(hClient);
 							channelAdapterInbox.setCamelContext(camelContext);
@@ -245,7 +245,7 @@ public abstract class Hubot {
 							Class<Object> fc;
 							fc = (Class<Object>) Class.forName(nameAdapter);
 							Adapter newAdapter = (Adapter) fc.newInstance();
-							newAdapter.setActor(adapterConf.getActor());
+							newAdapter.setActor(adapterConf.getTargetActorId());
 							newAdapter.setProperties(adapterConf.getProperties());
 							newAdapter.setHClient(hClient);
 							newAdapter.setCamelContext(camelContext);

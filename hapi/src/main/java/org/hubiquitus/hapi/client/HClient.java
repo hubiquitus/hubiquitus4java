@@ -25,13 +25,11 @@
 
 package org.hubiquitus.hapi.client;
 
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Hashtable;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.UUID;
-import java.util.regex.Pattern;
 
 import org.hubiquitus.hapi.exceptions.MissingAttrException;
 import org.hubiquitus.hapi.hStructures.ConnectionError;
@@ -111,7 +109,7 @@ public class HClient {
 
 	/**
 	 * Establishes a connection to hNode to allow the reception and sending of messages and commands.
-	 * @param publisher : user urn (ie : urn:domai:username). Mandatory.
+	 * @param login : login. Mandatory.
 	 * @param password : Mandatory.
 	 * @param options : Complementary values used for the connection to the server. Not mandatory.
 	 * @param context : Not mandatory.
@@ -144,14 +142,8 @@ public class HClient {
 			this.notifyStatus(ConnectionStatus.CONNECTING, ConnectionError.NO_ERROR, null);
 
 			// fill HTransportOptions
-			if(Pattern.matches(HUtil.URN_REGEX, login)) {
-				this.fillHTransportOptions(login, password, options, context);
-			} else{
-				// stop connecting if filling error
-				this.notifyStatus(ConnectionStatus.DISCONNECTED, ConnectionError.URN_MALFORMAT, null);
-				return;
-			}
-
+			this.fillHTransportOptions(login, password, options, context);
+			logger.info("--------------------------------");
 			// choose transport layer
 			if (options.getTransport().equals("socketio")) {
 				/*
@@ -322,11 +314,17 @@ public class HClient {
 	 * @throws MissingAttrException  raised if a mandatory attribute is not well provided
 	 */
     @SuppressWarnings("unused")
-	public void unsubscribe(HMessageDelegate messageDelegate) throws MissingAttrException {
-		if(messageDelegate == null){
+	public void unsubscribe(String actor, HMessageDelegate messageDelegate) throws MissingAttrException {
+		if(actor == null || actor.length()<=0){
+			throw new MissingAttrException("actor");
+		}
+    	if(messageDelegate == null){
 			throw new MissingAttrException("messageDelegate");
 		}
 		HMessage cmdMessage = buildCommand("session", "hUnsubscribe",null, null, null);
+		HCommand cmd = cmdMessage.getPayloadAsHCommand();
+		cmd.setParams(actor);
+		cmdMessage.setPayload(cmd);
 		cmdMessage.setTimeout(options.getMsgTimeout());
 		send(cmdMessage, messageDelegate);
 	}
@@ -476,7 +474,7 @@ public class HClient {
 			return;
 		}
 		
-		HMessage cmdMessage = buildCommand(actor, "hRelevantMessages",filter, null, null);
+		HMessage cmdMessage = buildCommand(actor, "hRelevantMessages", null, filter, null);
 		cmdMessage.setTimeout(options.getMsgTimeout());
 		this.send(cmdMessage, messageDelegate);
 	}
@@ -803,12 +801,12 @@ public class HClient {
 
 	/**
 	 * fill htransport, randomly pick an endpoint from availables endpoints. By default it uses options server host to fill serverhost field and as fallback urn domain
-	 * @param login : publisher as urn format (urn:domain:username)
+	 * @param login : login
 	 * @param password the password to open the a session with the hnode
 	 * @param options options to open a session
 	 */
 	private void fillHTransportOptions(String login, String password, HOptions options, JSONObject context) {
-		this.transportOptions.setUrn(login);
+		this.transportOptions.setLogin(login);
 		this.transportOptions.setPassword(password);
 		this.transportOptions.setAuthCB(options.getAuthCB());
 		this.transportOptions.setTimeout(options.getTimeout());

@@ -28,9 +28,6 @@ package org.hubiquitus.hubotsdk;
 
 import org.apache.camel.impl.DefaultCamelContext;
 import org.hubiquitus.hapi.client.HClient;
-import org.hubiquitus.hapi.client.HMessageDelegate;
-import org.hubiquitus.hapi.hStructures.HMessage;
-import org.hubiquitus.hapi.hStructures.ResultStatus;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

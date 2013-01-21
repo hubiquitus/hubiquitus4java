@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -22,7 +23,6 @@ import org.apache.http.message.BasicNameValuePair;
 import org.hubiquitus.hapi.hStructures.HMessage;
 import org.hubiquitus.hubotsdk.AdapterInbox;
 import org.hubiquitus.hubotsdk.adapters.HHttpAdapter.HHttpAdapterRouteBuilder;
-import org.joda.time.DateTime;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -48,7 +48,7 @@ public class HInstagramRealTimeInbox extends AdapterInbox implements Processor{
 	private String callbackUrl;
 
 
-	private long lastTime = (new DateTime().getMillis()) /1000;
+	private long lastTime = (new Date().getTime()) /1000;
 
 
 	private static final String INSTAGRAM_SUBSCRIPTION_ENDPOINT = "https://api.instagram.com/v1/subscriptions/";
@@ -244,7 +244,7 @@ public class HInstagramRealTimeInbox extends AdapterInbox implements Processor{
 		HMessage message = new HMessage();
 		message.setAuthor(this.actor);
 		message.setType("HInstagramRT");
-		message.setPublished(new DateTime());
+		message.setPublished(new Date());
 		message.setPayload(instagramResult);
 		return message; 
 	}

@@ -28,6 +28,7 @@ package org.hubiquitus.hubotsdk.adapters;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
+import java.util.Date;
 import java.util.Map;
 
 import javax.activation.DataHandler;
@@ -41,7 +42,6 @@ import org.hubiquitus.hubotsdk.AdapterInbox;
 import org.hubiquitus.hubotsdk.adapters.HHttpAdapter.HHttpAdapterRouteBuilder;
 import org.hubiquitus.hubotsdk.adapters.HHttpAdapter.HHttpAttachement;
 import org.hubiquitus.hubotsdk.adapters.HHttpAdapter.HHttpData;
-import org.joda.time.DateTime;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -137,7 +137,7 @@ public class HHttpAdapterInbox extends AdapterInbox implements Processor{
 		}
         message.setHeaders(jsonHeaders);
 		
-		message.setPublished(new DateTime());
+		message.setPublished(new Date());
 		
 		message.setType("hHttpData");
 		//create payload

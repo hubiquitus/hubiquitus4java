@@ -25,8 +25,8 @@
 
 package org.hubiquitus.hubotsdk.adapters.HtwitterAdapter;
 import java.net.URL;
+import java.util.Date;
 
-import org.joda.time.DateTime;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -302,23 +302,46 @@ public class HTweetAuthor extends JSONObject {
 	/**
 	 * @return The date of profile creation.
 	 */
-	public DateTime getCreatedAt() {
-		DateTime createdAt;
+	public Date getCreatedAtAsDate() {
+		Date createdAt;
 		try {
-			createdAt = (DateTime) this.get("createdAt");;
+			createdAt = new Date(this.getLong("createdAt"));;
 		} catch (JSONException e) {
 			createdAt = null;
 		}
 		return createdAt;
 	}
 
+	
+	public long getCreatedAt() {
+		long createdAt;
+		try {
+			createdAt = this.getLong("createdAt");
+		} catch (JSONException e) {
+			createdAt = 0;
+		}
+		return createdAt;
+	}
 	/**
 	 * Set the date of profile creation.
 	 * @param createdAt
 	 */
-	public void setCreatedAt(DateTime createdAt) {
+	public void setCreatedAt(Date createdAt) {
 		try {
 			if(createdAt == null ) {
+				log.error("message: createdAt attribute is mandatory.");
+			} else {
+				this.put("createdAt", createdAt.getTime());
+			}
+		} catch (JSONException e) {
+			log.error("Can't update the createdAt  attribut",e);
+		}
+	}
+	
+	
+	public void setCreatedAt(long createdAt) {
+		try {
+			if(createdAt == 0 ) {
 				log.error("message: createdAt attribute is mandatory.");
 			} else {
 				this.put("createdAt", createdAt);

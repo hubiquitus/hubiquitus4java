@@ -25,6 +25,8 @@
 
 package org.hubiquitus.hubotsdk.adapters;
 
+import java.util.Date;
+
 import org.hubiquitus.hapi.exceptions.MissingAttrException;
 import org.hubiquitus.hapi.hStructures.HGeo;
 import org.hubiquitus.hapi.hStructures.HLocation;
@@ -32,7 +34,6 @@ import org.hubiquitus.hapi.hStructures.HMessage;
 import org.hubiquitus.hubotsdk.AdapterInbox;
 import org.hubiquitus.hubotsdk.adapters.HtwitterAdapter.HTweet;
 import org.hubiquitus.hubotsdk.adapters.HtwitterAdapter.HTweetAuthor;
-import org.joda.time.DateTime;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -198,7 +199,7 @@ public class HTwitterAdapterInbox extends AdapterInbox{
 			hauthortweet.setDescription(tweet.getUser().getDescription());		
 			hauthortweet.setProfileImg(tweet.getUser().getProfileImageURL().toString());
 			hauthortweet.setUrl(tweet.getUser().getURL());
-            hauthortweet.setCreatedAt(new DateTime(tweet.getUser().getCreatedAt()));
+            hauthortweet.setCreatedAt(tweet.getUser().getCreatedAt());
 			hauthortweet.setLang(tweet.getUser().getLang());
 			hauthortweet.setListeds(tweet.getUser().getListedCount());
 			hauthortweet.setGeo(tweet.getUser().isGeoEnabled());
@@ -224,8 +225,8 @@ public class HTwitterAdapterInbox extends AdapterInbox{
 		message.setPayload(htweet);
 		message.setType("hTweet");
 		message.setAuthor(tweet.getUser().getScreenName() + "@twitter.com");
-        DateTime createdAt = new DateTime(tweet.getCreatedAt());
-        message.setPublished(new DateTime(createdAt));
+        Date createdAt = tweet.getCreatedAt();
+        message.setPublished(createdAt);
 
         if (log.isDebugEnabled()) {
 			log.debug("tweet("+tweet+") -> hMessage :"+message);

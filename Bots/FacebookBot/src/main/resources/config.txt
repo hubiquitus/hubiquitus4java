@@ -1,12 +1,11 @@
 {
 	"type" : "com.mycompany.WordCount",
-	"actor" : "user@domain",
+	"actor" : "urn:domain:user",
 	"pwd" : "userPassword",
 	"hserver" : "YourEndPoint",
 	
 	"adapters" : [ 
 		{
-			"actor" : "yourUserName@facebook.com", 
 			"type" :  "org.hubiquitus.hubotsdk.adapters.HFacebookAdapterInbox", 
 			
 			"properties" : {

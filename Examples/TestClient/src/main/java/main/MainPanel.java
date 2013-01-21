@@ -54,15 +54,13 @@ import org.hubiquitus.hapi.hStructures.HStatus;
 import org.hubiquitus.hapi.hStructures.OperandNames;
 import org.hubiquitus.hapi.transport.socketio.ConnectedCallback;
 import org.hubiquitus.hapi.transport.socketio.HAuthCallback;
-import org.joda.time.DateTime;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
  * 
  * @author speed
- * @version 0.3 The panel for this example
+ * @version 0.5 The panel for this example
  */
 
 @SuppressWarnings("serial")
@@ -73,10 +71,10 @@ public class MainPanel extends JPanel implements HStatusDelegate,
 
 	private HOptions option = new HOptions();
 
-	private JTextField usernameField = new JTextField("u1@localhost");
-	private JTextField passwordField = new JTextField("u1");
+	private JTextField usernameField = new JTextField("urn:localhost:u1");
+	private JTextField passwordField = new JTextField("urn:localhost:u1");
 	private JTextField endPointField = new JTextField("http://localhost:8080");
-	private JTextField actorField = new JTextField("#test@localhost");
+	private JTextField actorField = new JTextField("urn:localhost:testChannel");
 	private JTextField messageField = new JTextField("test");
 	private JTextField nbLastMessagesField = new JTextField("");
 	private JTextField convidField = new JTextField("");
@@ -90,7 +88,6 @@ public class MainPanel extends JPanel implements HStatusDelegate,
 	private JButton connectButton = new JButton("Connect");
 	private JButton disconnectButton = new JButton("Disconnect");
 	private JButton sendButton = new JButton("send");
-	private JButton createChannelButton = new JButton("createChannel");
 	private JButton subscribeButton = new JButton("subscribe");
 	private JButton unsubscribeButton = new JButton("unsubscribe");
 	// private JButton publishButton = new JButton("publish");
@@ -100,7 +97,7 @@ public class MainPanel extends JPanel implements HStatusDelegate,
 	private JButton getThreadsButton = new JButton("getThreads");
 	private JButton pubConvStateButton = new JButton("pubConvState");
 	private JButton setFilterButton = new JButton("setFilter");
-	private JButton listFiltersButton = new JButton("listFilters");
+//	private JButton listFiltersButton = new JButton("listFilters");
 	private JButton unsetFilterButton = new JButton("unsetFilter");
 	private JButton getRelevantMessagesButton = new JButton(
 			"getRelevantMessages");
@@ -115,7 +112,7 @@ public class MainPanel extends JPanel implements HStatusDelegate,
 			"not persistent");
 	private ButtonGroup persistentGroup = new ButtonGroup();
 
-	private JTextArea logArea = new JTextArea(10, 100);
+	private JTextArea logArea = new JTextArea(20, 100);
 	private JTextArea statusArea = new JTextArea(1, 90);
 
 	public MainPanel() {
@@ -190,7 +187,6 @@ public class MainPanel extends JPanel implements HStatusDelegate,
 		controlsPanel.add(connectButton);
 		controlsPanel.add(disconnectButton);
 		controlsPanel.add(sendButton);
-		controlsPanel.add(createChannelButton);
 		controlsPanel.add(subscribeButton);
 		controlsPanel.add(unsubscribeButton);
 		// controlsPanel.add(publishButton);
@@ -200,7 +196,7 @@ public class MainPanel extends JPanel implements HStatusDelegate,
 		controlsPanel.add(getThreadsButton);
 		controlsPanel.add(pubConvStateButton);
 		controlsPanel.add(setFilterButton);
-		controlsPanel.add(listFiltersButton);
+//		controlsPanel.add(listFiltersButton);
 		controlsPanel.add(unsetFilterButton);
 		controlsPanel.add(getRelevantMessagesButton);
 		controlsPanel.add(cleanButton);
@@ -226,7 +222,6 @@ public class MainPanel extends JPanel implements HStatusDelegate,
 		connectButton.addMouseListener(new ConnectionButtonListener());
 		disconnectButton.addMouseListener(new DisconnectionButtonListener());
 		sendButton.addMouseListener(new SendButtonListener());
-		createChannelButton.addMouseListener(new CreateChannelButtonListener());
 		subscribeButton.addMouseListener(new SubscribeButtonListener());
 		unsubscribeButton.addMouseListener(new UnsubscribeButtonListener());
 		// publishButton.addMouseListener(new PublishButtonListener());
@@ -238,7 +233,7 @@ public class MainPanel extends JPanel implements HStatusDelegate,
 		getThreadsButton.addMouseListener(new GetThreadsButtonListener());
 		pubConvStateButton.addMouseListener(new PubConvStateButtonListener());
 		setFilterButton.addMouseListener(new SetFilterListener());
-		listFiltersButton.addMouseListener(new ListFiltersListener());
+//		listFiltersButton.addMouseListener(new ListFiltersListener());
 		unsetFilterButton.addMouseListener(new UnsetFilterListener());
 		getRelevantMessagesButton
 				.addMouseListener(new GetRelevantMessagesListener());
@@ -357,27 +352,6 @@ public class MainPanel extends JPanel implements HStatusDelegate,
 		}
 	}
 
-	class CreateChannelButtonListener extends MouseAdapter {
-		public void mouseClicked(MouseEvent event) {
-			JSONObject channelToCreate = new JSONObject();
-
-			try {
-				channelToCreate.put("type", "channel");
-				channelToCreate.put("actor", actorField.getText());
-				channelToCreate.put("owner", usernameField.getText());
-				JSONArray jsonArray = new JSONArray();
-				jsonArray.put(usernameField.getText());
-				jsonArray.put("u2@localhost");
-				channelToCreate.put("subscribers", jsonArray);
-				channelToCreate.put("active", true);
-				HMessage message = client.buildCommand("hnode@localhost.com",
-						"hcreateupdatechannel", channelToCreate, null);
-				client.send(message, outerClass);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-	}
 
 	// Listener of button clean
 	class CleanButtonListener extends MouseAdapter {
@@ -504,8 +478,8 @@ public class MainPanel extends JPanel implements HStatusDelegate,
 			 HArrayOfValue values = new HArrayOfValue();
 			 values.setName("publisher");
 			 JSONArray jsonArray = new JSONArray();
-			 jsonArray.put("u1@localhost");
-//			 jsonArray.put("u2@localhost");
+			 jsonArray.put("urn:localhost:u1");
+			 jsonArray.put("urn:localhost:u2");
 			 values.setValues(jsonArray);
 			 filter.setValueArray(OperandNames.IN, values);
 			 try {
@@ -549,11 +523,14 @@ public class MainPanel extends JPanel implements HStatusDelegate,
 
 	// Listener of button unsetFilter
 	class UnsetFilterListener extends MouseAdapter {
-		// public void mouseClicked(MouseEvent event) {
-		// String actor = chidField.getText();
-		// String filterName = filterNameField.getText();
-		// client.unsetFilter(filterName,actor,outerClass);
-		// }
+		 public void mouseClicked(MouseEvent event) {
+			 try {
+				 HCondition filter = new HCondition("{}");
+				client.setFilter(filter, outerClass);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		 }
 	}
 
 	// Listener of button getRelevantMessages
@@ -573,6 +550,7 @@ public class MainPanel extends JPanel implements HStatusDelegate,
 
 	@Override
 	public void onMessage(HMessage message) {
+		
 		String txtComplete = this.logArea.getText() + "\n" +  "CallBack !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! \n";
 		txtComplete +=message.toString();
 		if (message.getPayload() != null)
@@ -583,6 +561,9 @@ public class MainPanel extends JPanel implements HStatusDelegate,
 
 	@Override
 	public void onStatus(HStatus status) {
+		System.out.println("--> status : " + status.getStatus());
+		System.out.println("--> fullUrn : " + client.getFullUrn());
+		System.out.println("--> resource : " + client.getResource());
 		this.setStatusArea("hstatus");
 		this.addTextArea(status.toString());
 		if (status.getErrorCode() == ConnectionError.NO_ERROR

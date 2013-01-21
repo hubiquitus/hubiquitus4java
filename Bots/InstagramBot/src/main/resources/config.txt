@@ -5,7 +5,6 @@
     "hserver": "yourEndPoint",
     "adapters": [
         {
-            "actor": "yourInstagram@yourDomain",
             "type": "org.hubiquitus.hubotsdk.adapters.HInstagramTagsInbox",
             "properties": {
                 "proxyHost": "yourProxyHost",

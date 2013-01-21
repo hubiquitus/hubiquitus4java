@@ -44,10 +44,10 @@ public class HAdapterConf extends JSONObject {
 	/**
 	 * @return The of the target actor id.
 	 */
-	public String getTargetActorId(){
+	public String getActor(){
 		String actor;
 		try {
-			actor = this.getString("targetActorId");
+			actor = this.getString("actor");
 		} catch (Exception e) {
 			actor = null;
 		}
@@ -56,15 +56,15 @@ public class HAdapterConf extends JSONObject {
 	
 	/**
 	 * Set the target actor id. 
-	 * @param targetActorId
+	 * @param Actor
 	 * @throws MissingAttrException 
 	 */
-	public void setTargetActorId(String targetActorId) throws MissingAttrException{
+	public void setActor(String Actor) throws MissingAttrException{
 		try {
-			if(targetActorId == null || targetActorId.length()<=0){
+			if(Actor == null || Actor.length()<=0){
 				throw new MissingAttrException("targetActorId");
 			}
-			this.put("targetActorId", targetActorId);
+			this.put("actor", Actor);
 		} catch (JSONException e) {
 			logger.error("Can not set actor attribute : ", e); 
 		}

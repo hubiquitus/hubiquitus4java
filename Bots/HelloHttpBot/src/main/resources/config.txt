@@ -12,7 +12,7 @@
 			}	
 		},
 		{
-		"targetActorId" : "httpOutbox",
+		"actor" : "httpOutbox",
 		"type" : "org.hubiquitus.hubotsdk.adapters.HHttpAdapterOutbox"
 		}
 	

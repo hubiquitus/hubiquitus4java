@@ -28,7 +28,7 @@
 		},
 		{
 
-			"targetActorId" : "twitter_outbox",
+			"actor" : "twitter_outbox",
 			"type" : "org.hubiquitus.hubotsdk.adapters.HTwitterAdapterOutbox_1_1",
 			"properties" : {
 				"proxyHost":"0.0.0.0",

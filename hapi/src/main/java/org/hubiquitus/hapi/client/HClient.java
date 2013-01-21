@@ -143,7 +143,6 @@ public class HClient {
 
 			// fill HTransportOptions
 			this.fillHTransportOptions(login, password, options, context);
-			logger.info("--------------------------------");
 			// choose transport layer
 			if (options.getTransport().equals("socketio")) {
 				/*

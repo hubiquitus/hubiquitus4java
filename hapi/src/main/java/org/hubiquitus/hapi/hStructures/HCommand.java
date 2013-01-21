@@ -54,17 +54,7 @@ public class HCommand extends JSONObject {
 		setFilter(filter);
 	}
 	
-	public HCommand(String cmd, String params, HCondition filter){
-		this();
-		try {
-			setCmd(cmd);
-		} catch (MissingAttrException e) {
-			logger.error("message: ", e);
-		}
-		setParams(params);
-		setFilter(filter);
-	}
-
+	
 	public HCommand(JSONObject jsonObj) throws JSONException {
 		super(jsonObj.toString());
 	}

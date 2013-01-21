@@ -10,6 +10,9 @@ logger.txt
 
 target/
 
+logger.txt
+logger.log
+
 *.pydevproject
 .project
 .metadata

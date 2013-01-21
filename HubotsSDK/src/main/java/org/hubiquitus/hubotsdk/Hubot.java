@@ -42,12 +42,12 @@ import org.hubiquitus.hapi.client.HStatusDelegate;
 import org.hubiquitus.hapi.exceptions.MissingAttrException;
 import org.hubiquitus.hapi.hStructures.ConnectionStatus;
 import org.hubiquitus.hapi.hStructures.HAckValue;
+import org.hubiquitus.hapi.hStructures.HCondition;
 import org.hubiquitus.hapi.hStructures.HMessage;
 import org.hubiquitus.hapi.hStructures.HMessageOptions;
 import org.hubiquitus.hapi.hStructures.HOptions;
 import org.hubiquitus.hapi.hStructures.HStatus;
 import org.hubiquitus.hapi.hStructures.ResultStatus;
-import org.hubiquitus.hapi.structures.JabberID;
 import org.hubiquitus.hubotsdk.adapters.HChannelAdapterInbox;
 import org.hubiquitus.hubotsdk.adapters.HubotAdapterInbox;
 import org.hubiquitus.hubotsdk.adapters.HubotAdapterOutbox;
@@ -55,7 +55,6 @@ import org.hubiquitus.hubotsdk.topology.HAdapterConf;
 import org.hubiquitus.hubotsdk.topology.HTopology;
 import org.hubiquitus.util.HubotStatus;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -168,24 +167,18 @@ public abstract class Hubot {
 		// Create instance of all Adapter
 		
 		if(adapters != null) {
-			ArrayList<JabberID> listJid = new ArrayList<JabberID>();
+			ArrayList<String> listAdapters = new ArrayList<String>();
 				for(int i=0; i< adapters.length(); i++) {
 					HAdapterConf adapterConf;
 					try {
 						adapterConf = new HAdapterConf(adapters.getJSONObject(i));
-						JabberID jid = null;
-						try {
-							jid = new JabberID(adapterConf.getActor());
-						} catch (Exception e) {
-							logger.error("Adapter's actor attribute is invalide: " + adapterConf.getActor());
-							return false;
-						}
+						String targetActorId = adapterConf.getActor();
 						
-						if(listJid.contains(jid)){
+						if(listAdapters.contains(targetActorId)){
 							logger.error("Adapter's actor attribute is already used: " + adapterConf.getActor());
 							return false;
 						}
-						listJid.add(jid);
+						listAdapters.add(targetActorId);
 					} catch (Exception e) {
 						logger.info("message: ", e);
 						return false;
@@ -526,12 +519,13 @@ public abstract class Hubot {
 	 * @param actor : The actor for the hMessage. Mandatory.
 	 * @param cmd : The name of the command. Mandatory.
 	 * @param params : Parameters of the command. Not mandatory.
+	 * @param filter : The filter.
 	 * @param options : The options to use if any for the creation of the hMessage. Not mandatory.
 	 * @return A hMessage with a hCommand payload.
 	 * @throws MissingAttrException 
 	 */
-    protected HMessage buildCommand(String actor, String cmd, JSONObject params, HMessageOptions options) throws MissingAttrException{
-		return hClient.buildCommand(actor, cmd, params, options);
+    protected HMessage buildCommand(String actor, String cmd, JSONObject params, HCondition filter, HMessageOptions options) throws MissingAttrException{
+		return hClient.buildCommand(actor, cmd, params, filter, options);
 	}
 	
 	/**

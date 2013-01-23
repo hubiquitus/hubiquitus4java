@@ -30,7 +30,7 @@ import org.json.JSONObject;
 
 /** 
  * @cond internal
- * @version 0.5
+ * @version 0.6
  * options used for transport layers
  */
 

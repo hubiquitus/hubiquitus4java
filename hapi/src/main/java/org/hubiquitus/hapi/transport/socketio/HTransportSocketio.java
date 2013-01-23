@@ -46,7 +46,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * @cond internal
- * @version 0.5
+ * @version 0.6
  * HTransportSocketIO is the socketio transport layer of the hubiquitus hAPI client
  */
 

@@ -28,7 +28,6 @@
 	<version>1.0.0</version>
 
 	<name>TwitterHelloBot</name>
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
@@ -76,12 +75,12 @@
 		<dependency>
 			<groupId>org.hubiquitus.hubiquitus4java</groupId>
 			<artifactId>HubotsSDK</artifactId>
-			<version>0.6</version>
+			<version>0.6.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hubiquitus.hubiquitus4java</groupId>
 			<artifactId>hAPI</artifactId>
-			<version>0.6</version>
+			<version>0.6.0</version>
 		</dependency>
 		<!--dependency>
 			<groupId>org.json.jar</groupId>

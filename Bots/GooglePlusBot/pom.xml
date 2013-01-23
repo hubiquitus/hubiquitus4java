@@ -26,7 +26,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.hubiquitus.hubiquitus4j</groupId>
+  <groupId>org.hubiquitus.hubiquitus4java.samples</groupId>
   <artifactId>GooglePlusBot</artifactId>
   <version>1.0.0</version>
   <packaging>jar</packaging>
@@ -87,17 +87,17 @@
 		</dependency>
 		
 		<dependency>
-            <groupId>org.hubiquitus.hubiquitus4j</groupId>
+            <groupId>org.hubiquitus.hubiquitus4java</groupId>
             <artifactId>HubotsSDK</artifactId>
-            <version>0.5.5</version>
+            <version>0.6.0</version>
         </dependency>
           <dependency>
-               	<groupId>org.hubiquitus.hubiquitus4j</groupId>
+               	<groupId>org.hubiquitus.hubiquitus4java</groupId>
   				<artifactId>hAPI</artifactId>
-  				<version>0.5.5</version>
+  				<version>0.6.0</version>
         </dependency>		
 		<dependency>
-			<groupId>org.hubiquitus.hubiquitus4j.hgoogleplus</groupId>
+			<groupId>org.hubiquitus.hubiquitus4java.components</groupId>
 			<artifactId>HGooglePlus</artifactId>
 			<version>1.0.0</version>
 		</dependency>

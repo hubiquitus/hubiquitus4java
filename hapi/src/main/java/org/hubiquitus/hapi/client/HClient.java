@@ -320,10 +320,13 @@ public class HClient {
     	if(messageDelegate == null){
 			throw new MissingAttrException("messageDelegate");
 		}
-		HMessage cmdMessage = buildCommand("session", "hUnsubscribe",null, null, null);
-		HCommand cmd = cmdMessage.getPayloadAsHCommand();
-		cmd.setParams(actor);
-		cmdMessage.setPayload(cmd);
+    	JSONObject param = new JSONObject();
+    	try {
+			param.put("channel", actor);
+		} catch (JSONException e) {
+			logger.info("Message: ", e);
+		}
+		HMessage cmdMessage = buildCommand("session", "hUnsubscribe",param, null, null);
 		cmdMessage.setTimeout(options.getMsgTimeout());
 		send(cmdMessage, messageDelegate);
 	}

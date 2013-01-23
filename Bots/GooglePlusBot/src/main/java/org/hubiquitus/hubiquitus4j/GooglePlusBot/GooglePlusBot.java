@@ -43,7 +43,7 @@ public class GooglePlusBot extends Hubot
 	int count =0;
 	@Override
 	protected void inProcessMessage(HMessage gpMessage) {
-		log.info((count++)+"- [GooglePlus]  Received message:  "+gpMessage.toString() );
+		log.info((count++)+"- [GooglePlus]  Received message:  " + gpMessage.toString() );
 
 
 	}

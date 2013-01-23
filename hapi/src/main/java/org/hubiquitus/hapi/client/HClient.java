@@ -25,6 +25,7 @@
 
 package org.hubiquitus.hapi.client;
 
+import java.util.Date;
 import java.util.Hashtable;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -46,13 +47,11 @@ import org.hubiquitus.hapi.hStructures.HOptions;
 import org.hubiquitus.hapi.hStructures.HResult;
 import org.hubiquitus.hapi.hStructures.HStatus;
 import org.hubiquitus.hapi.hStructures.ResultStatus;
-import org.hubiquitus.hapi.structures.JabberID;
 import org.hubiquitus.hapi.transport.HTransport;
 import org.hubiquitus.hapi.transport.HTransportDelegate;
 import org.hubiquitus.hapi.transport.HTransportOptions;
 import org.hubiquitus.hapi.transport.socketio.HTransportSocketio;
 import org.hubiquitus.hapi.util.HUtil;
-import org.joda.time.DateTime;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -60,7 +59,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * @version 0.5 Hubiquitus client, public API
+ * @version 0.6 Hubiquitus client, public API
  */
 
 public class HClient {
@@ -75,18 +74,19 @@ public class HClient {
 	private HOptions options = null;
 	private HTransportOptions transportOptions = null;
 	private HTransport transport;
-
+	private HCondition filter;
+	
 	private HStatusDelegate statusDelegate = null;
 	private HMessageDelegate messageDelegate = null;
-	// private HCommandDelegate commandDelegate = null;
+	
 
 	private Hashtable<String, HMessageDelegate> messagesDelegates = new Hashtable<String, HMessageDelegate>();
 	private Hashtable<String, Timer> timeoutHashtable = new Hashtable<String, Timer>();
 
 	private TransportDelegate transportDelegate = new TransportDelegate();
 	
-    public String getFullJid() {
-		return this.transportOptions.getJid().getFullJID();
+    public String getFullUrn() {
+		return this.transportOptions.getFullUrn();
 	}
 
 
@@ -99,17 +99,23 @@ public class HClient {
 
 	public HClient() {
 		transportOptions = new HTransportOptions();
+		try {
+			filter = new HCondition("{}"); // by default, the filter is empty.
+		} catch (JSONException e) {
+			logger.error("Can not init filter : ", e);
+		}
 	}
 
 
 	/**
 	 * Establishes a connection to hNode to allow the reception and sending of messages and commands.
-	 * @param publisher : user jid (ie : my_user@domain/resource). Mandatory.
+	 * @param login : login. Mandatory.
 	 * @param password : Mandatory.
 	 * @param options : Complementary values used for the connection to the server. Not mandatory.
+	 * @param context : Not mandatory.
 	 */
     @SuppressWarnings("unused")
-	public void connect(String publisher, String password, HOptions options) {
+	public void connect(String login, String password, HOptions options, JSONObject context) {
 		boolean shouldConnect = false;
 		boolean connInProgress = false;
 		boolean disconInProgress = false;
@@ -136,14 +142,7 @@ public class HClient {
 			this.notifyStatus(ConnectionStatus.CONNECTING, ConnectionError.NO_ERROR, null);
 
 			// fill HTransportOptions
-			try {
-				this.fillHTransportOptions(publisher, password, options);
-			} catch (Exception e) {
-				// stop connecting if filling error
-				this.notifyStatus(ConnectionStatus.DISCONNECTED, ConnectionError.JID_MALFORMAT, e.getMessage());
-				return;
-			}
-
+			this.fillHTransportOptions(login, password, options, context);
 			// choose transport layer
 			if (options.getTransport().equals("socketio")) {
 				/*
@@ -168,6 +167,17 @@ public class HClient {
 			}
 		}
 	}
+    
+    
+    /**
+	 * Establishes a connection to hNode to allow the reception and sending of messages and commands.
+	 * @param publisher : user urn (ie : urn:domai:username). Mandatory.
+	 * @param password : Mandatory.
+	 * @param options : Complementary values used for the connection to the server. Not mandatory.
+	 */
+    public void connect(String login, String password, HOptions options){
+    	this.connect(login, password, options, null);
+    }
 
 	/**
 	 * Disconnect the user from the current working session.
@@ -227,7 +237,7 @@ public class HClient {
 	 * The hserver will perform one of the following actions :
 	 *  (1). If the actor is a channel (ie : #channelName@domain) the hserver will perform a publish operation of the provided hMessage to the channel and send an hMessage with hResult payload containing the published message and cmd name set with hsend to acknowledge publishing only if a timeout value has been provided.
 	 *  (2). If the actor is either ‘session’ and payload type is ‘hCommand’ the server will handle it. In other cases, it will send an hMessage with a hResult error NOT_AUTHORIZED. Only if the timeout is provided.
-	 *  (3). If the actor is a jid, hserver will relay the message to the relevant actor.
+	 *  (3). If the actor is a urn, hserver will relay the message to the relevant actor.
 	 * @param message : The message to send. Mandatory.
 	 * @param messageDelegate : If provided, called by the hAPI when the first message refering to current message arrive . Not mandatory.
 	 */
@@ -244,8 +254,8 @@ public class HClient {
 			notifyResultError(message.getMsgid(), ResultStatus.MISSING_ATTR, "Actor not found in message", messageDelegate);
 			return;
 		}
-		message.setSent(new DateTime());
-		message.setPublisher(transportOptions.getJid().getBareJID());
+		message.setSent(new Date());
+		message.setPublisher(transportOptions.getFullUrn());
 		if (message.getTimeout() > 0) {
 			// hAPI will do correlation. If no answer within the
 			// timeout, a timeout error will be sent.
@@ -289,7 +299,7 @@ public class HClient {
 		if(messageDelegate == null){
 			throw new MissingAttrException("messageDelegate");
 		}
-		HMessage cmdMessage = buildCommand(actor, "hsubscribe", null, null);
+		HMessage cmdMessage = buildCommand(actor, "hSubscribe",null ,null, null);
 		cmdMessage.setTimeout(options.getMsgTimeout());
 		send(cmdMessage, messageDelegate);
 	}
@@ -304,10 +314,19 @@ public class HClient {
 	 */
     @SuppressWarnings("unused")
 	public void unsubscribe(String actor, HMessageDelegate messageDelegate) throws MissingAttrException {
-		if(messageDelegate == null){
+		if(actor == null || actor.length()<=0){
+			throw new MissingAttrException("actor");
+		}
+    	if(messageDelegate == null){
 			throw new MissingAttrException("messageDelegate");
 		}
-		HMessage cmdMessage = buildCommand(actor, "hunsubscribe", null, null);
+    	JSONObject param = new JSONObject();
+    	try {
+			param.put("channel", actor);
+		} catch (JSONException e) {
+			logger.info("Message: ", e);
+		}
+		HMessage cmdMessage = buildCommand("session", "hUnsubscribe",param, null, null);
 		cmdMessage.setTimeout(options.getMsgTimeout());
 		send(cmdMessage, messageDelegate);
 	}
@@ -334,7 +353,7 @@ public class HClient {
 		} catch (JSONException e) {
 			logger.error("message: ", e);
 		}
-		HMessage cmdMessage = buildCommand(actor, "hgetlastmessages", params, null);
+		HMessage cmdMessage = buildCommand(actor, "hGetLastMessages", params,filter, null);
 		cmdMessage.setTimeout(options.getMsgTimeout());
 		send(cmdMessage, messageDelegate);
 	}
@@ -361,7 +380,7 @@ public class HClient {
 		if(messageDelegate == null){
 			throw new MissingAttrException("messageDelegate");
 		}
-		HMessage cmdMessage = buildCommand(transportOptions.getHserverService(), "hgetsubscriptions", null, null);
+		HMessage cmdMessage = buildCommand("session", "hGetSubscriptions", null,null, null);
 		cmdMessage.setTimeout(options.getMsgTimeout());
 		this.send(cmdMessage, messageDelegate);
 	}
@@ -380,7 +399,7 @@ public class HClient {
 			throw new MissingAttrException("messageDelegate");
 		}
 		JSONObject params = new JSONObject();
-		String cmdName = "hgetthread";
+		String cmdName = "hGetThread";
 
 		// check mandatory fields
 		if (actor == null || actor.length() <= 0) {
@@ -399,7 +418,7 @@ public class HClient {
 			logger.error("message: ", e);
 		}
 
-		HMessage cmdMessage = this.buildCommand(actor, cmdName, params, null);
+		HMessage cmdMessage = this.buildCommand(actor, cmdName, params,filter, null);
 		cmdMessage.setTimeout(options.getMsgTimeout());
 		this.send(cmdMessage, messageDelegate);
 	}
@@ -434,7 +453,7 @@ public class HClient {
 		} catch (JSONException e) {
 			logger.error("message: ", e);
 		}
-		HMessage cmdMessage = buildCommand(actor, "hgetthreads", params, null);
+		HMessage cmdMessage = buildCommand(actor, "hGetThreads", params,filter, null);
 		cmdMessage.setTimeout(options.getMsgTimeout());
 		this.send(cmdMessage, messageDelegate);
 	}
@@ -456,8 +475,8 @@ public class HClient {
 			notifyResultError(null, ResultStatus.MISSING_ATTR, "actor is missing", messageDelegate);
 			return;
 		}
-
-		HMessage cmdMessage = buildCommand(actor, "hRelevantMessages", null, null);
+		
+		HMessage cmdMessage = buildCommand(actor, "hRelevantMessages", null, filter, null);
 		cmdMessage.setTimeout(options.getMsgTimeout());
 		this.send(cmdMessage, messageDelegate);
 	}
@@ -473,7 +492,8 @@ public class HClient {
 		if(messageDelegate == null){
 			throw new MissingAttrException("messageDelegate");
 		}
-		HMessage cmdMessage = buildCommand("session", "hSetFilter", filter, null);
+		HMessage cmdMessage = buildCommand("session", "hSetFilter", filter, null, null);
+		this.filter = filter;
 		cmdMessage.setTimeout(options.getMsgTimeout());
 		this.send(cmdMessage, messageDelegate);
 	}
@@ -507,7 +527,8 @@ public class HClient {
 			hmessage.setPriority(options.getPriority());
 			//override relevance if relevanceOffset is set.
 			if (options.getRelevanceOffset() != null) {
-				hmessage.setRelevance((new DateTime()).plusMillis(options.getRelevanceOffset()));
+				
+				hmessage.setRelevance((new Date()).getTime() + options.getRelevanceOffset());
 			}else{
 				hmessage.setRelevance(options.getRelevance());
 			}
@@ -518,8 +539,8 @@ public class HClient {
 			hmessage.setPublished(options.getPublished());
 			hmessage.setTimeout(options.getTimeout());
 		}
-		if (transportOptions != null && transportOptions.getJid() != null) {
-			hmessage.setPublisher(transportOptions.getJid().getBareJID());
+		if (transportOptions != null && transportOptions.getFullUrn() != null) {
+			hmessage.setPublisher(transportOptions.getFullUrn());
 		} else {
 			hmessage.setPublisher(null);
 		}
@@ -657,7 +678,7 @@ public class HClient {
 	 * @return A hMessage with a hCommand payload.
 	 * @throws MissingAttrException raised if a mandatory attribute is not well provided
 	 */
-	public HMessage buildCommand(String actor, String cmd, JSONObject params, HMessageOptions options) throws MissingAttrException {
+	public HMessage buildCommand(String actor, String cmd, JSONObject params, HCondition filter, HMessageOptions options) throws MissingAttrException {
 		// check for required attributes
 		if (actor == null || actor.length() <= 0) {
 			throw new MissingAttrException("actor");
@@ -668,7 +689,7 @@ public class HClient {
 			throw new MissingAttrException("cmd");
 		}
 
-		HCommand hcommand = new HCommand(cmd, params);
+		HCommand hcommand = new HCommand(cmd, params, filter);
 		return buildMessage(actor, "hCommand", hcommand, options);
 	}
 
@@ -781,20 +802,17 @@ public class HClient {
 	/* HTransportCallback functions */
 
 	/**
-	 * fill htransport, randomly pick an endpoint from availables endpoints. By default it uses options server host to fill serverhost field and as fallback jid domain
-	 * @param publisher : publisher as jid format (my_user@serverhost.com/my_resource)
+	 * fill htransport, randomly pick an endpoint from availables endpoints. By default it uses options server host to fill serverhost field and as fallback urn domain
+	 * @param login : login
 	 * @param password the password to open the a session with the hnode
 	 * @param options options to open a session
-	 * @throws Exception : in case jid is malformatted, it throws an exception
 	 */
-	private void fillHTransportOptions(String publisher, String password, HOptions options) throws Exception {
-		JabberID jid = new JabberID(publisher);
-
-		this.transportOptions.setJid(jid);
+	private void fillHTransportOptions(String login, String password, HOptions options, JSONObject context) {
+		this.transportOptions.setLogin(login);
 		this.transportOptions.setPassword(password);
 		this.transportOptions.setAuthCB(options.getAuthCB());
 		this.transportOptions.setTimeout(options.getTimeout());
-
+		this.transportOptions.setContext(context);
 		// by default we user server host rather than publish host if defined
 
 		// for endpoints, pick one randomly and fill htransport options

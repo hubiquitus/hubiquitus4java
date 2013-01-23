@@ -27,7 +27,7 @@
 package org.hubiquitus.hapi.hStructures;
 
 /**
- * @version 0.5
+ * @version 0.6
  * Enumeration of different status of connection take by the client.
  * For more information see Hubiquitus reference
  */

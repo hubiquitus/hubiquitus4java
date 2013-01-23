@@ -28,13 +28,13 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 
 import org.hubiquitus.hapi.exceptions.MissingAttrException;
 import org.hubiquitus.hapi.hStructures.HGeo;
 import org.hubiquitus.hapi.hStructures.HLocation;
 import org.hubiquitus.hapi.hStructures.HMessage;
-import org.joda.time.DateTime;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -55,7 +55,7 @@ public class TweetToHMessage {
 	 * @return Joda date
 	 * @throws ParseException
 	 */
-	public static java.util.Date getTwitterDate(String date) throws ParseException {
+	public static Date getTwitterDate(String date) throws ParseException {
 
 		final String TWITTER="EEE MMM dd HH:mm:ss ZZZZZ yyyy";
 		SimpleDateFormat sf = new SimpleDateFormat(TWITTER);
@@ -123,9 +123,9 @@ public class TweetToHMessage {
 
 		// Init The date
 		try {
-			DateTime createdAt = new DateTime(getTwitterDate(tweet.getString("created_at")) );
-			DateTime createdAtAuthor = new DateTime(getTwitterDate(tweet.getJSONObject("user").getString("created_at")));
-			message.setPublished(new DateTime(createdAt));
+			Date createdAt = getTwitterDate(tweet.getString("created_at"));
+			Date createdAtAuthor = getTwitterDate(tweet.getJSONObject("user").getString("created_at"));
+			message.setPublished(createdAt);
 			hauthortweet.setCreatedAt(createdAtAuthor);
 
 		} catch (ParseException e2) {

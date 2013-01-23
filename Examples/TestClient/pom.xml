@@ -81,17 +81,12 @@
         <dependency>
             <groupId>org.hubiquitus.hubiquitus4java</groupId>
             <artifactId>hAPI</artifactId>
-            <version>0.5.5</version>
+            <version>0.6</version>
         </dependency>
 
 
         <!-- temprary fix issue with the non transitive hAPI pom -->
 
-        <dependency>
-            <groupId>joda-time</groupId>
-            <artifactId>joda-time</artifactId>
-            <version>2.1</version>
-        </dependency>
         <dependency>
             <groupId>org.socket.io</groupId>
             <artifactId>socket.io</artifactId>

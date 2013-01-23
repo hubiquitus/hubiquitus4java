@@ -25,17 +25,20 @@
 
 package org.hubiquitus.hapi.transport;
 
-import org.hubiquitus.hapi.structures.JabberID;
 import org.hubiquitus.hapi.transport.socketio.HAuthCallback;
+import org.json.JSONObject;
 
 /** 
  * @cond internal
- * @version 0.5
+ * @version 0.6
  * options used for transport layers
  */
 
 public class HTransportOptions {
-	private JabberID jid = null;
+	private String login = null;
+	private String fullUrn = null;
+	private String domain = null;
+	private String resource = null;
 	private String password = null;
 	private String endpointHost = null;
 	private int endpointPort = 0;
@@ -43,6 +46,7 @@ public class HTransportOptions {
 	private String hserver = "hnode";
 	private HAuthCallback authCB = null;
 	private int timeout = 0;
+	private JSONObject context = null;
 	
 	public HTransportOptions() {
 		super();
@@ -50,62 +54,54 @@ public class HTransportOptions {
 	
 	/* getters and setters */
 
-	/**
-	 * Convenient function
-	 * give username part of the jid
-	 * @return username(without domain or resource)
-	 */
-	public String getUsername() {
-		if (jid == null) {
-			throw new NullPointerException("Error : " + this.getClass().getName() + " need a jid");
-		}
-		
-		return jid.getUsername();
+	public String getFullUrn() {
+		return fullUrn;
 	}
-	
+
+	public void setFullUrn(String fullUrn) {
+		this.fullUrn = fullUrn;
+		setDomain(fullUrn.split(":")[1]);
+		setResource(fullUrn.split(":")[2].split("/")[1]);
+	}
+
+	public String getDomain() {
+		return domain;
+	}
+
+	public void setDomain(String domain) {
+		this.domain = domain;
+	}
 	/**
 	 * Convenient function
-	 * give resource part of the jid
+	 * give resource part of the urn
 	 * @return resource
 	 */
-	public String getResource() {
-		if (jid == null) {
-			throw new NullPointerException("Error : " + this.getClass().getName() + " need a jid");
-		}
-		
-		return jid.getResource();
+	public String getResource(){
+		return this.resource;
+	}
+	
+	public void setResource(String resource) {
+		this.resource = resource;
+	}
+	
+	public JSONObject getContext(){
+		return this.context;
+	}
+	
+	public void setContext(JSONObject context){
+		this.context = context;
 	}
 	
 	/**
-	 * @return hserver service name (by default it should be "hnode.domain")
+	 * @return user urn (ie : urn:domaine:username)
 	 */
-	public String getHserverService() {
-		String nodeService = null;
-		
-		if(this.jid != null) {
-			nodeService = this.hserver + "@" + this.jid.getDomain();
-		}
-		
-		return nodeService;
-	}
-	
-	/**
-	 * @return pubsub service name (by default it should be "pubsub")
-	 */
-	public String getPubsubService() {
-		return "pubsub" + "." + this.jid.getDomain();
-	}
-	
-	/**
-	 * @return user jid (ie : my_user@domain.com/resource)
-	 */
-	public JabberID getJid() {
-		return jid;
+	public String getLogin() {
+		return login;
 	}
 
 
-	public void setJid(JabberID jid) {
-		this.jid = jid;
+	public void setLogin(String login) {
+		this.login = login;
 	}
 
 
@@ -181,70 +177,7 @@ public class HTransportOptions {
 	public void setTimeout(int timeout){
 		this.timeout = timeout;
 	}
-	/* overrides */
 	
-	@Override
-	public String toString() {
-		return "HTransportOptions [jid=" + jid + ", password=" + password
-				+ ", endpointHost=" + endpointHost + ", endpointPort="
-				+ endpointPort + ", endpointPath=" + endpointPath + ", hNode="
-				+ hserver + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result
-				+ ((endpointHost == null) ? 0 : endpointHost.hashCode());
-		result = prime * result
-				+ ((endpointPath == null) ? 0 : endpointPath.hashCode());
-		result = prime * result + endpointPort;
-		result = prime * result + ((hserver == null) ? 0 : hserver.hashCode());
-		result = prime * result + ((jid == null) ? 0 : jid.hashCode());
-		result = prime * result
-				+ ((password == null) ? 0 : password.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		HTransportOptions other = (HTransportOptions) obj;
-		if (endpointHost == null) {
-			if (other.endpointHost != null)
-				return false;
-		} else if (!endpointHost.equals(other.endpointHost))
-			return false;
-		if (endpointPath == null) {
-			if (other.endpointPath != null)
-				return false;
-		} else if (!endpointPath.equals(other.endpointPath))
-			return false;
-		if (endpointPort != other.endpointPort)
-			return false;
-		if (hserver == null) {
-			if (other.hserver != null)
-				return false;
-		} else if (!hserver.equals(other.hserver))
-			return false;
-		if (jid == null) {
-			if (other.jid != null)
-				return false;
-		} else if (!jid.equals(other.jid))
-			return false;
-		if (password == null) {
-			if (other.password != null)
-				return false;
-		} else if (!password.equals(other.password))
-			return false;
-		return true;
-	}
 }
 
 /**

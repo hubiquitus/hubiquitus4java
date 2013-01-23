@@ -31,6 +31,7 @@
     </properties>
 
 	<build>
+	    <pluginManagement>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -63,19 +64,20 @@
             </plugin>
 
         </plugins>
+        </pluginManagement>
 	</build>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.hubiquitus.hubiquitus4java</groupId>
 			<artifactId>HubotsSDK</artifactId>
-			<version>0.5.5</version>
+			<version>0.6</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.hubiquitus.hubiquitus4java</groupId>
 			<artifactId>hAPI</artifactId>
-			<version>0.5.5</version>
+			<version>0.6</version>
 		</dependency>
         <!--dependency>
               <groupId>org.json.jar</groupId>

@@ -25,6 +25,8 @@
 
 package org.hubiquitus.hapi.test;
 
+import java.util.Date;
+
 import org.hubiquitus.hapi.client.HClient;
 import org.hubiquitus.hapi.exceptions.MissingAttrException;
 import org.hubiquitus.hapi.hStructures.HAck;
@@ -37,7 +39,6 @@ import org.hubiquitus.hapi.hStructures.HMeasure;
 import org.hubiquitus.hapi.hStructures.HMessage;
 import org.hubiquitus.hapi.hStructures.HMessageOptions;
 import org.hubiquitus.hapi.hStructures.HMessagePriority;
-import org.joda.time.DateTime;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Assert;
@@ -75,8 +76,8 @@ public class HBuilderTest {
 
 		hmessageOption.setPriority(HMessagePriority.INFO);
 
-		DateTime date = new DateTime();
-		hmessageOption.setRelevance(date);
+		Date date = new Date();
+		hmessageOption.setRelevance(date.getTime());
 
 		hmessageOption.setPersistent(false);
 
@@ -108,9 +109,9 @@ public class HBuilderTest {
 		Assert.assertEquals(hmessage.getPayloadAsJSONObject().toString(),
 				payload.toString());
 		Assert.assertEquals(hmessage.getPriority(), HMessagePriority.INFO);
-		Assert.assertEquals(hmessage.getPublished(), null);
+		Assert.assertEquals(hmessage.getPublished(), 0);
 		Assert.assertEquals(hmessage.getPersistent(), false);
-		Assert.assertEquals(hmessage.getRelevance(), date); 
+		Assert.assertEquals(hmessage.getRelevance(), date.getTime()); 
 
 	}
 
@@ -137,8 +138,8 @@ public class HBuilderTest {
 
 		hmessageOption.setPriority(HMessagePriority.INFO);
 
-		DateTime date = new DateTime();
-		hmessageOption.setRelevance(date);
+		Date date = new Date();
+		hmessageOption.setRelevance(date.getTime());
 
 		hmessageOption.setPersistent(false);
 
@@ -188,8 +189,8 @@ public class HBuilderTest {
 
 		hmessageOption.setPriority(HMessagePriority.INFO);
 
-		DateTime date = new DateTime();
-		hmessageOption.setRelevance(date);
+		Date date = new Date();
+		hmessageOption.setRelevance(date.getTime());
 
 		hmessageOption.setPersistent(false);
 
@@ -240,8 +241,8 @@ public class HBuilderTest {
 
 		hmessageOption.setPriority(HMessagePriority.INFO);
 
-		DateTime date = new DateTime();
-		hmessageOption.setRelevance(date);
+		Date date = new Date();
+		hmessageOption.setRelevance(date.getTime());
 
 		hmessageOption.setPersistent(false);
 
@@ -292,8 +293,8 @@ public class HBuilderTest {
 
 		hmessageOption.setPriority(HMessagePriority.INFO);
 
-		DateTime date = new DateTime();
-		hmessageOption.setRelevance(date);
+		Date date = new Date();
+		hmessageOption.setRelevance(date.getTime());
 
 		hmessageOption.setPersistent(false);
 

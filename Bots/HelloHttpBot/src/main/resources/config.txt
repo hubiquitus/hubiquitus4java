@@ -1,11 +1,10 @@
 {
 	"type" : "com.mycompany.WordCount",
-	"actor" : "u2@localhost",
-	"pwd" : "u2",
+	"actor" : "urn:localhost:u1",
+	"pwd" : "urn:localhost:u1",
 	"hserver" : "http://localhost:8080",
 	"adapters" : [
 		{
-		"actor" : "httpInbox@domain.com",
 		"type" : "org.hubiquitus.hubotsdk.adapters.HHttpAdapterInbox",
 		"properties" : {
 				"host" : "localhost",
@@ -13,7 +12,7 @@
 			}	
 		},
 		{
-		"actor" : "httpOutbox@domain.com",
+		"actor" : "httpOutbox",
 		"type" : "org.hubiquitus.hubotsdk.adapters.HHttpAdapterOutbox"
 		}
 	

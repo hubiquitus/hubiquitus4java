@@ -19,66 +19,66 @@
 	see <http://opensource.org/licenses/mit-license.php>. -->
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.hubiquitus.hubiquitus4java.samples</groupId>
-	<artifactId>HelloHttpBot</artifactId>
-	<version>0.5.5</version>
+    <groupId>org.hubiquitus.hubiquitus4java.samples</groupId>
+    <artifactId>HelloHttpBot</artifactId>
+    <version>0.5.5</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-	<build>
-	    <pluginManagement>
-		<plugins>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<encoding>${project.build.sourceEncoding}</encoding>
-					<optimize>true</optimize>
-					<source>1.6</source>
-					<target>1.6</target>
-				</configuration>
-			</plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>2.6</version>
-                <executions>
-                    <execution>
-                        <id>copy-dependencies</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>copy-dependencies</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${project.build.directory}/lib</outputDirectory>
-                            <overWriteReleases>false</overWriteReleases>
-                            <overWriteSnapshots>true</overWriteSnapshots>
-                            <overWriteIfNewer>true</overWriteIfNewer>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <encoding>${project.build.sourceEncoding}</encoding>
+                        <optimize>true</optimize>
+                        <source>1.6</source>
+                        <target>1.6</target>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>2.6</version>
+                    <executions>
+                        <execution>
+                            <id>copy-dependencies</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>copy-dependencies</goal>
+                            </goals>
+                            <configuration>
+                                <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                                <overWriteReleases>false</overWriteReleases>
+                                <overWriteSnapshots>true</overWriteSnapshots>
+                                <overWriteIfNewer>true</overWriteIfNewer>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
 
-        </plugins>
+            </plugins>
         </pluginManagement>
-	</build>
+    </build>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.hubiquitus.hubiquitus4java</groupId>
-			<artifactId>HubotsSDK</artifactId>
-			<version>0.6.0</version>
-		</dependency>
+    <dependencies>
+        <dependency>
+            <groupId>org.hubiquitus.hubiquitus4java</groupId>
+            <artifactId>HubotsSDK</artifactId>
+            <version>0.6.0</version>
+        </dependency>
 
-		<dependency>
-			<groupId>org.hubiquitus.hubiquitus4java</groupId>
-			<artifactId>hAPI</artifactId>
-			<version>0.6.0</version>
-		</dependency>
+        <dependency>
+            <groupId>org.hubiquitus.hubiquitus4java</groupId>
+            <artifactId>hAPI</artifactId>
+            <version>0.6.0</version>
+        </dependency>
         <!--dependency>
               <groupId>org.json.jar</groupId>
               <artifactId>json-lib</artifactId>
@@ -91,17 +91,49 @@
             <artifactId>json</artifactId>
             <version>20090211</version>
         </dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>1.6.6</version>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-nop</artifactId>
-			<version>1.6.6</version>
-			<scope>compile</scope>
-		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.6.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.6.6</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-jetty</artifactId>
+            <version>2.10.0</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.2.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpmime</artifactId>
+            <version>4.2.1</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.socket.io</groupId>
+            <artifactId>socket.io</artifactId>
+            <version>0.0.0</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/../../external-libs/socketio.jar</systemPath>
+        </dependency>
+
+    </dependencies>
 </project>

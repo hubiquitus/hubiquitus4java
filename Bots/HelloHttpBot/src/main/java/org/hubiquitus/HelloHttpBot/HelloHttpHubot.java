@@ -25,6 +25,7 @@
 
 package org.hubiquitus.HelloHttpBot;
 
+import org.hubiquitus.hapi.client.HClient;
 import org.hubiquitus.hapi.exceptions.MissingAttrException;
 import org.hubiquitus.hapi.hStructures.HMessage;
 import org.hubiquitus.hubotsdk.Hubot;
@@ -34,11 +35,14 @@ import org.slf4j.LoggerFactory;
 public class HelloHttpHubot extends Hubot{
 
 	final Logger logger = LoggerFactory.getLogger(HelloHttpHubot.class);
+
+
 	public static void main(String[] args) throws Exception{
-		HelloHttpHubot hubot = new HelloHttpHubot();
+        HelloHttpHubot hubot = new HelloHttpHubot();
 		hubot.start();
 	}
-	
+
+
 	@Override
 	public void inProcessMessage(HMessage incomingMessage) {
 		logger.info("received message from " + incomingMessage.getAuthor() + " : ");
@@ -61,7 +65,7 @@ public class HelloHttpHubot extends Hubot{
 			/*****test out box*****/
 			// try to use out box to send the message to http://localhost:8082
 			try {
-				incomingMessage.setActor("httpOutbox@domain.com");
+				incomingMessage.setActor("httpOutbox");
 				if (httpData.getServerPort() != 8082){
 					httpData.setServerPort(8082);
 

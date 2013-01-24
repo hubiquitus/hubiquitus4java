@@ -1,20 +1,20 @@
 {
 	"type" : "com.mycompany.WordCount",
-	"actor" : "urn:localhost:u1",
-	"pwd" : "urn:localhost:u1",
+	"actor" : "urn:localhost:user",
+	"pwd" : "***",
 	"hserver" : "http://localhost:8080",
 	"adapters" : [
 		{
-		"type" : "org.hubiquitus.hubotsdk.adapters.HHttpAdapterInbox",
-		"properties" : {
-				"host" : "localhost",
-				"port" : "8082"
-			}	
-		},
-		{
-		"actor" : "httpOutbox",
-		"type" : "org.hubiquitus.hubotsdk.adapters.HHttpAdapterOutbox"
-		}
-	
+            "type" : "org.hubiquitus.hubotsdk.adapters.HHttpAdapterInbox",
+            "properties" :
+                {
+                    "host" : "localhost",
+                    "port" : "8082"
+                }
+        },
+        {
+            "actor" : "httpOutbox",
+            "type" : "org.hubiquitus.hubotsdk.adapters.HHttpAdapterOutbox"
+        }
 	]
 }

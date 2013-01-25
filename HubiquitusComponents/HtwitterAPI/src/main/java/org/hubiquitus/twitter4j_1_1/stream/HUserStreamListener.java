@@ -26,7 +26,7 @@ package org.hubiquitus.twitter4j_1_1.stream;
 
 import org.json.JSONObject;
 
-public interface HUserStreamListner {	
+public interface HUserStreamListener {
 
 	/**
 	 * called when a status is received throw the Streaming API

@@ -24,7 +24,7 @@
 
 package org.hubiquitus.hfacebook.publics;
 
-public interface HFacebookListners {
+public interface HFacebookListener {
 
 	/**
 	 * called when a status on page is received throw the Facebook API

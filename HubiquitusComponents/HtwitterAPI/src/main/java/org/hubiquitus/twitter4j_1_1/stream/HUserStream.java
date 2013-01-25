@@ -175,7 +175,7 @@ public class HUserStream {
 
 	private static Logger log = Logger.getLogger(HUserStream.class);
 
-	private ArrayList<HUserStreamListner> listeners = new ArrayList<HUserStreamListner>();
+	private ArrayList<HUserStreamListener> listeners = new ArrayList<HUserStreamListener>();
 
 	public HUserStream(String proxyHost, int proxyPort, String tags,String delimited,String stallWarnings, String with, String replies, String locations,String count,String consumerKey, String consumerSecret, String token, String tokenSecret) {
 		super();
@@ -200,12 +200,12 @@ public class HUserStream {
 	 * Used to add a listener
 	 * @param listener which must implement the HStreamlistener to get the status
 	 */
-	public void addListener(HUserStreamListner listener) {
+	public void addListener(HUserStreamListener listener) {
 		listeners.add(listener);
 		log.debug("listener added: "+listener);
 	}
 
-	public void removeListener(HUserStreamListner listener) {
+	public void removeListener(HUserStreamListener listener) {
 		listeners.remove(listener);
 		log.debug("listener removed: "+listener);
 	}
@@ -215,7 +215,7 @@ public class HUserStream {
 		int code = 	item.has("text")?1: item.has("warning")?2 : item.has("delete")?3 : item.has("scrub_geo")?4 : 
 			item.has("limit")?5 : item.has("status_withheld")?6 : item.has("user_withheld")?7 : item.has("disconnect")?8 : 0;
 		
-		for (HUserStreamListner listener : listeners) {			
+		for (HUserStreamListener listener : listeners) {
 			switch (code) {
 			case 1 :listener.onStatus(item); break;
 			case 2 :listener.onStallWarning(item); break;

@@ -153,7 +153,7 @@ public class HStream {
 
 	private static Logger log = Logger.getLogger(HStream.class);
 
-	private ArrayList<HStreamListner> listeners = new ArrayList<HStreamListner>();
+	private ArrayList<HStreamListener> listeners = new ArrayList<HStreamListener>();
 
 	public HStream(String proxyHost, 
 			int proxyPort, 
@@ -191,12 +191,12 @@ public class HStream {
 	 * Used to add a listener
 	 * @param listener which must implement the HStreamlistener to get the status
 	 */
-	public void addListener(HStreamListner listener) {
+	public void addListener(HStreamListener listener) {
 		listeners.add(listener);
 		log.debug("listener added: "+listener);
 	}
 
-	public void removeListener(HStreamListner listener) {
+	public void removeListener(HStreamListener listener) {
 		listeners.remove(listener);
 		log.debug("listener removed: "+listener);
 	}
@@ -206,7 +206,7 @@ public class HStream {
 		int code = 	item.has("text")?1: item.has("warning")?2 : item.has("delete")?3 : item.has("scrub_geo")?4 : 
 			item.has("limit")?5 : item.has("status_withheld")?6 : item.has("user_withheld")?7 : item.has("disconnect")?8 : 0;
 
-		for (HStreamListner listener : listeners) {			
+		for (HStreamListener listener : listeners) {
 			switch (code) {
 			case 1 :listener.onStatus(item); break;
 			case 2 :listener.onStallWarning(item); break;

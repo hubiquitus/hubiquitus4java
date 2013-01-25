@@ -41,7 +41,7 @@ import org.slf4j.LoggerFactory;
 public class GetLikeFacebook {
 
 	final static Logger log = LoggerFactory.getLogger(GetLikeFacebook.class);
-	private ArrayList<HFacebookListners> listeners = new ArrayList<HFacebookListners>();
+	private ArrayList<HFacebookListener> listeners = new ArrayList<HFacebookListener>();
 
 	private String url;
 	private long roundTime;
@@ -76,19 +76,19 @@ public class GetLikeFacebook {
 
 	}
 
-	public void addListener(HFacebookListners listener) {
+	public void addListener(HFacebookListener listener) {
 		listeners.add(listener);
 		log.debug("listener added: "+listener);
 	}
 
-	public void removeListener(HFacebookListners listener) {
+	public void removeListener(HFacebookListener listener) {
 		listeners.remove(listener);
 		log.debug("listener removed: "+listener);
 	}
 
 
 	private void fireEvent(FBStatus item) {  
-		for (HFacebookListners listener : listeners)
+		for (HFacebookListener listener : listeners)
 			listener.onStatus(item);
 	}
 

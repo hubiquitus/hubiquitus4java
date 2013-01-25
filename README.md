@@ -1,14 +1,25 @@
 # Hubiquitus4java - An implementation of Hubiquitus for the Java platform
 
-Hubiquitus4java is a set of three Java components :
+Hubiquitus4java is a set of Java components :
 
 * Hubiquitus API : the Java bindings for the hubiquitus semantics
 * Hubot SDK : a kit for Java developers allowing rapid development of hubiquitus agents called hubots
-* Hubiquitus Server : the application server
+* Hubiquitus components : HTwitterAPI-1.1, HFacebook and HGooglePlus. The API used for the corresponding bots.
+* Bots : it contains the sample bots you can lance for test.
 
-Recently, Hubiquitus added four components : HTwitterAPI-1.1, HFacebook, HGooglePlus and HInstagram. That can be used independently, with a simple client.
 
-The "Bots" folder content five samples bots :
+## Prerequisite
+
+[maven](http://maven.apache.org/) : all our jars are managed by maven.
+
+## How to install
+
+Before you lance the bots for test, you have to install the hAPI and HubotSDK.
+
+See [Installation of hAPI](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/hAPI/installation_hapi.md) to install hAPI.
+See [Installation of HubotSDK]() to install HubotSDK.
+
+The "Bots" folder contains five samples bots :
 
 * TwitterBot allows to retrive data from twitter and post a tweets [[README]](https://github.com/maniadel/hubiquitus4java/blob/master/Bots/TwitterBot/README.md)
 * HFacebookBot allows to retrive data from facebook [[README]](https://github.com/maniadel/hubiquitus4java/blob/master/Bots/FacebookBot/README.md)

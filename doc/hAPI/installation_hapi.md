@@ -8,7 +8,7 @@ We tested with [intellij IDEA](http://www.jetbrains.com/idea/).
 2. Maven Projects -> hAPI -> Lifecycle -> install.
 
 Now the hAPI is ready to be used.
-All the jars will be saved by default in C:\Users\[your account]\.m2\repository
+All the jars will be saved by default in C:/Users/[your account]/.m2/repository
 
 ### Linux
 
@@ -16,4 +16,4 @@ All the jars will be saved by default in C:\Users\[your account]\.m2\repository
 2. Tap "mvn clean install"
 
 Now the hAPI is ready to be used.
-All the jars will be saved by default in [your account]\.m2\repository
+All the jars will be saved by default in [your account]/.m2/repository

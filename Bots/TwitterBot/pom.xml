@@ -122,5 +122,10 @@
             <scope>system</scope>
             <systemPath>${basedir}/../../external-libs/socketio.jar</systemPath>
         </dependency>
+        <dependency>
+            <groupId>org.hubiquitus.hubiquitus4java.components</groupId>
+            <artifactId>HTwitterAPI_1_1</artifactId>
+            <version>1.0.0</version>
+        </dependency>
 	</dependencies>
 </project>

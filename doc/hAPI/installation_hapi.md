@@ -4,7 +4,7 @@
 
 We tested with [intellij IDEA](http://www.jetbrains.com/idea/).
 
-1. Import the hubiquitus4java/hapi/pom.xml.
+1. Open intellij and import the hubiquitus4java/hapi/pom.xml.
 2. Maven Projects -> hAPI -> Lifecycle -> install.
 
 Now the hAPI is ready to be used.

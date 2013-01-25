@@ -26,14 +26,14 @@ package org.hubiquitus.hubotsdk.adapters;
 import org.hubiquitus.hapi.hStructures.HMessage;
 import org.hubiquitus.hfacebook.publics.FBStatus;
 import org.hubiquitus.hfacebook.publics.GetLikeFacebook;
-import org.hubiquitus.hfacebook.publics.HFacebookListners;
+import org.hubiquitus.hfacebook.publics.HFacebookListener;
 import org.hubiquitus.hubotsdk.AdapterInbox;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class HFacebookAdapterInbox extends AdapterInbox implements HFacebookListners{
+public class HFacebookAdapterInbox extends AdapterInbox implements HFacebookListener{
 
 
 	final Logger log = LoggerFactory.getLogger(HFacebookAdapterInbox.class);

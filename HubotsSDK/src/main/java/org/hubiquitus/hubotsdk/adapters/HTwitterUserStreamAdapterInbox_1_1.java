@@ -30,7 +30,7 @@ import org.hubiquitus.hapi.hStructures.HMessage;
 import org.hubiquitus.hubotsdk.AdapterInbox;
 import org.hubiquitus.hubotsdk.adapters.HtwitterAdapter.TweetToHMessage;
 import org.hubiquitus.twitter4j_1_1.stream.HUserStream;
-import org.hubiquitus.twitter4j_1_1.stream.HUserStreamListner;
+import org.hubiquitus.twitter4j_1_1.stream.HUserStreamListener;
 
 
 
@@ -40,7 +40,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
-public class HTwitterUserStreamAdapterInbox_1_1 extends AdapterInbox implements HUserStreamListner
+public class HTwitterUserStreamAdapterInbox_1_1 extends AdapterInbox implements HUserStreamListener
 {
 	final Logger log = LoggerFactory.getLogger(HTwitterUserStreamAdapterInbox_1_1.class);
 

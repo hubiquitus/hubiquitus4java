@@ -17,9 +17,9 @@ Hubiquitus4java is a set of Java components :
 Before you lance the bots for test, you have to install the hAPI and HubotSDK.
 
  * See [Installation of hAPI](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/hAPI/installation_hapi.md) to install hAPI.
- * See [Installation of HubotSDK]() to install HubotSDK.
+ * See [Installation of HubotSDK](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/HubotSDK/installation_HubotSDK.md) to install HubotSDK.
 
-## not finished
+## Under construction
 
 The "Bots" folder contains five samples bots :
 

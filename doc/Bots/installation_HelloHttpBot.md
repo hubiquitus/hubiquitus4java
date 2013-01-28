@@ -1,8 +1,7 @@
 ## How to run HelloHttpBot
 
 You need to : 
- * [install hAPI]()
- * [install HubotSDK]()
+ * [install HubotSDK](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/HubotSDK/installation_HubotSDK.md)
  * fill the file _config.txt_
     - Your _config.txt_ would look like:
 

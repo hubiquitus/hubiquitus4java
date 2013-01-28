@@ -1,11 +1,3 @@
+## How to run GooglePlusbot
 
-To run GooglePlusBot bot you need to : 
-
-1. Complete your config.txt of your bot; [See GooglePlus Adapters](https://github.com/maniadel/hubiquitus4java/blob/master/doc/HubotsdkAdapters.md) 
-2. mvn install to : hubiquitusComponents, HubotSDK and hAPI  (in this order)
-     -    mvn clean 
-     -    mvn install
-     -    mvn package
-3. run your main 
-
-
+[Click here to see how ro run the GooglePlusBot.](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/Bots/installation_GooglePlusBot.md)

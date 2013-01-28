@@ -20,3 +20,10 @@ You need to:
 		]
 }
 ```
+
+ * install the jar included in pom.xml
+   - Windows with intellij : Maven Project -> HelloBot -> Lifecycle -> install
+   - Linux : 
+  	 1. Go to hubiquitus4java/Bots/HelloBot
+  	 2. tap "mvn clean install"
+ * run the project

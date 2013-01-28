@@ -6,4 +6,7 @@ Before you can run the project
  * you have to [install hAPI](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/hAPI/installation_hapi.md).
  * you have to install all the jar included in the pom.xml
     - Windows with intellij : maven project -> TestClient -> install
-    - Linux : tap "mvn clean isntall" in the terminal.
+    - Linux : 
+         1. Go to hubiquitus4java/Examples/TestClient
+         2. tap "mvn clean install"
+ * run project

@@ -4,6 +4,20 @@ The HTwitterAPI 1.1 in this part, it used by a simple client independently of Hu
 
 ## How to use HTwitterAPI 1.1 for the Simple Client? 
 
+First of all, [install HTwitterAPI](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/installation_HTwitter.md).
+
+
+The adequate pom.xml is :
+
+```xml
+<dependency>
+	<groupId>org.hubiquitus.htwitterAPI4j_1.1</groupId>
+	<artifactId>HtwitterAPI</artifactId>
+	<version>1.0.0</version>
+</dependency>
+```
+
+
 To use HTwitterAPI 1.1 for the simple client in case of simple stream, you need to import the packeges named : org.hubiquitus.twitter4j.stream.pub.HStream and import org.hubiquitus.twitter4j.stream.pub.HStreamListner.  
 
 Otherwise you want to use the HTwitterAPI 1.1 for the  user stream you need to import the package named : import org.hubiquitus.twitter4j.stream.pub.HUserStream and  org.hubiquitus.twitter4j.stream.pub.HUserStreamListner. 
@@ -254,14 +268,4 @@ public class TwitterSendTweet {
 	}
 
 }
-```
-
-The adequate pom.xml is :
-
-```xml
-<dependency>
-	<groupId>org.hubiquitus.htwitterAPI4j_1.1</groupId>
-	<artifactId>HtwitterAPI</artifactId>
-	<version>1.0.0</version>
-</dependency>
 ```

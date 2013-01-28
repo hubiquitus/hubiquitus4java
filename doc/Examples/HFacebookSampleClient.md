@@ -4,7 +4,7 @@ The HFacebook in this part, it used by a simple client independently of Hubiquit
 
 ## How to use HFacebook  for the Simple Client? 
 
-In this part, we use Facebook to get periodically number of likes of an facebook page desired. to use it, you just have to generate the jar _HFacebook-1.0.0.jar_ (with maven). In your project you just need to import the pakage named _org.hubiquitus.hfacebook_ and use the class GetLikeFacebook. 
+In this part, we use Facebook to get periodically number of likes of an facebook page desired. to use it, you just have to [install HFacebook](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/installation_HFacebook.md). In your project you just need to import the pakage named _org.hubiquitus.hfacebook_ and use the class GetLikeFacebook. 
 Bellow you can see a sample of code. 
 
 ## Exemple HFacebook client 

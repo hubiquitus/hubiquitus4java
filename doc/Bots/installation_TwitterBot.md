@@ -40,7 +40,7 @@ You need to :
 			"type" : "org.hubiquitus.hubotsdk.adapters.HTwitterAdapterOutbox_1_1",
 			"properties" : {
 				"proxyHost":"0.0.0.0",
-				"proxyPort":000,
+				"proxyPort":0000,
 				"consumerKey" : "***",
 				"consumerSecret" : "***",
 				"twitterAccessToken" : "***",
@@ -53,3 +53,10 @@ You need to :
 ```
   
   Note: [please see here to get your authentication of twitter application](https://dev.twitter.com/). 
+  
+ * Install all the jar incluede in pom.xml
+    - Windows with intellij : Maven project -> TwitterBot -> Lifecycle -> install
+    - Linux : 
+    	 1. Go to hubiquitus4java/Bots/TwitterBot in terminal
+    	 2. tap "mvn clean install"
+ * run project 

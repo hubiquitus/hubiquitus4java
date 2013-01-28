@@ -19,6 +19,10 @@ Before you lance the bots for test, you have to install the hAPI and HubotSDK.
  * See [Installation of hAPI](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/hAPI/installation_hapi.md) to install hAPI.
  * See [Installation of HubotSDK](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/HubotSDK/installation_HubotSDK.md) to install HubotSDK.
 
+
+## How to use
+
+
 ## The test projects
 
 The "Bots" folder contains five samples bots :

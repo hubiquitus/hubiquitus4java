@@ -5,7 +5,7 @@
 We tested with [intellij IDEA](http://www.jetbrains.com/idea/)
 
  1. Open intellij and import the hubiquitus4java/HubiquitusComponents/HFacebook/pom.xml.
- 2. Maven Projects -> HubotSDK -> Lifecycle -> install.
+ 2. Maven Projects -> HFacebook -> Lifecycle -> install.
 
 Now the HFacebook is ready to be used. All the jars will be saved by default in C:/Users/[your account]/.m2/repository
 

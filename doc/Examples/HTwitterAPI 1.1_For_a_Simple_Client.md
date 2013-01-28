@@ -7,7 +7,7 @@ The HTwitterAPI 1.1 in this part, it used by a simple client independently of Hu
 First of all, [install HTwitterAPI](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/installation_HTwitter.md).
 
 
-The adequate pom.xml is :
+Include the dependency below to your pom.xml:
 
 ```xml
 <dependency>

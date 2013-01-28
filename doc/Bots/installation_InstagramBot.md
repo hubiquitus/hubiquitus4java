@@ -16,13 +16,17 @@ You need to :
             "type": "org.hubiquitus.hubotsdk.adapters.HInstagramRealTimeInbox", // fix, the path of class HInstagramRealTimeInbox
             "properties": {
                 "port": yourPort, // port of your choice to listen http
-        "clientId":"InstagramClientId", // Instagram clien id, you get it at the instagram subscription
+                "clientId":"InstagramClientId", // Instagram clien id, you get it at the instagram subscription
                 "clientSecret":"InstagramClientSecret", // Instagram clien secret, you get it at the instagram subscription.
-            "object":"tag", // The object you'd like to subscribe to (in this case, "tag").
-                "aspect":"media", // The aspect of the object you'd like to subscribe to (for this adapter, "media"). Note that Instagram API only support "media" at this time, but it might supports other types of subscriptions in the future.
-                "object_id":"yourInstagramTag", // used to subscribe to new photos tagged with certain words. ie (Paris, USA, TIKJDA, ...), you can use 'object_id = nofilter' to listen all notification of new photos. You will receive a POST request at the callback URL every time anyone posts a new photo with the tag.
-            "verifyToken":"YourVerfyToken", // "you can chose it randomly" ie(19a78b66c)
-            "callbackUrl": "yourUrlCallBack" // is your url call back, ie( yourEndPoint:YourPort)   
+                "object":"tag", // The object you'd like to subscribe to (in this case, "tag").
+                "aspect":"media", // The aspect of the object you'd like to subscribe to (for this adapter, "media").
+                                  // Note that Instagram API only support "media" at this time, 
+                                  // but it might supports other types of subscriptions in the future.
+                "object_id":"yourInstagramTag", // used to subscribe to new photos tagged with certain words. ie (Paris, USA, TIKJDA, ...),
+                                                // you can use 'object_id = nofilter' to listen all notification of new photos. 
+                                                // You will receive a POST request at the callback URL every time anyone posts a new photo with the tag.
+                "verifyToken":"YourVerfyToken", // "you can chose it randomly" ie(19a78b66c)
+                "callbackUrl": "yourUrlCallBack" // is your url call back, ie( yourEndPoint:YourPort)   
             }
         }
     ]

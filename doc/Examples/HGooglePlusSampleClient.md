@@ -4,14 +4,14 @@ HGooglePlus generate a simple stream of data based on informations provided by G
 
 ##  How to use HGooglePlus ?
 
-First of all, you need to install HGooglePlus. You either generate the jar  from the github project [[click here](https://github.com/maniadel/hubiquitus4j/tree/master/HubiquitusComponents/HGooglePlus)]  and include it in your pom.xml file like:
+First of all, you need to [install HGooglePlus](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/installation_HGooglePlus.md) and include it in your pom.xml file like:
 
 ```xml
-<dependency>
-	<groupId>org.hubiquitus.hubiquitus4j.hgoogleplus</groupId>
-	<artifactId>HGooglePlus</artifactId>
-	<version>1.0.0</version>
-</dependency>
+		<dependency>
+			<groupId>org.hubiquitus.hubiquitus4java.components</groupId>
+			<artifactId>HGooglePlus</artifactId>
+			<version>1.0.0</version>
+		</dependency>
 ```
 
 ## Exemple GooglePlus simple client

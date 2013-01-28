@@ -22,6 +22,7 @@ Before you lance the bots for test, you have to install the hAPI and HubotSDK.
 
 ## How to use
 
+Coming soon ...
 
 ## The test projects
 

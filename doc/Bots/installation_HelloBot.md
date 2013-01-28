@@ -5,6 +5,7 @@ You need to:
  * [install HubotSDK](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/HubotSDK/installation_HubotSDK.md)
  * fill the file _config.txt_
     - the _config.txt_ would look like :
+    
 ```js
       
 {

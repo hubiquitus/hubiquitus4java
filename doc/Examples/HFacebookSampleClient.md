@@ -44,9 +44,9 @@ public class FaceBookSimpleClient implements HFacebookListners
 The adequate pom.xml is :
 
 ```xml
-<dependency>
-        <groupId>org.hubiquitus.hubiquitus4j.hfacebook</groupId>
-	<artifactId>HFacebook</artifactId>
-	<version>1.0.0</version>
-</dependency>
+	<dependency>
+			<groupId>org.hubiquitus.hubiquitus4java.components</groupId>
+			<artifactId>HFacebook</artifactId>
+			<version>1.0.0</version>
+	</dependency>
 ```

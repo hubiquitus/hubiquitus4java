@@ -19,13 +19,14 @@ Before you lance the bots for test, you have to install the hAPI and HubotSDK.
  * See [Installation of hAPI](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/hAPI/installation_hapi.md) to install hAPI.
  * See [Installation of HubotSDK](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/HubotSDK/installation_HubotSDK.md) to install HubotSDK.
 
-## Under construction
+## The test projects
 
 The "Bots" folder contains five samples bots :
 
 * TwitterBot allows to retrive data from twitter and post a tweets [[README]](https://github.com/maniadel/hubiquitus4java/blob/master/Bots/TwitterBot/README.md)
-* HFacebookBot allows to retrive data from facebook [[README]](https://github.com/maniadel/hubiquitus4java/blob/master/Bots/FacebookBot/README.md)
-* HInstagramBot allows to retrive data from instagram [[README]](https://github.com/maniadel/hubiquitus4java/blob/master/Bots/InstagramBot/README.md)
+* FacebookBot allows to retrive data from facebook [[README]](https://github.com/maniadel/hubiquitus4java/blob/master/Bots/FacebookBot/README.md)
+* InstagramBot allows to retrive data from instagram [[README]](https://github.com/maniadel/hubiquitus4java/blob/master/Bots/InstagramBot/README.md)
+* GooglePlusBot allows to retrive data from googleplus 
 * HelloBot allows to retrive a string and publish it on a node [[README]](https://github.com/maniadel/hubiquitus4java/blob/master/Bots/HelloBot/README.md)
 * HelloHttpBot allows to retrive data from RSS feed [[README]](https://github.com/maniadel/hubiquitus4java/blob/master/Bots/HelloHttpBot/README.md)
 

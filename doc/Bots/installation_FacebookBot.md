@@ -4,8 +4,8 @@ You need to:
   * [Install HubotSDK](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/HubotSDK/installation_HubotSDK.md)
   * Fill the file _config.txt_
     - Your _config.txt_ would look like: 
-```js
 
+```js
 {
   "type" : "com.mycompany.WordCount",
 	"actor" : "urn:domain:u1", // your login to connect to server
@@ -25,8 +25,8 @@ You need to:
 		}	
 	]
 }
-
 ```
+
 
   * Install all the jar included in pom.xml
     - Windows with intellij : Maven Project -> FacebookBot -> Lifecycle -> install

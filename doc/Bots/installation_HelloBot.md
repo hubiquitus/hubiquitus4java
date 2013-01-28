@@ -6,14 +6,16 @@ You need to:
  * fill the file _config.txt_
     - the _config.txt_ would look like :
     ```javascript
-      {
-"type" : "com.mycompany.WordCount",
-"actor" : "urn:localhost:u1",
-"pwd" : "urn:localhost:u1",
-"hserver" : "http://localhost:8080",
-"adapters" : [{
-  			"actor" : "urn:localhost:testChannel"
+      
+{
+	"type" : "com.mycompany.WordCount",
+	"actor" : "urn:localhost:u1",
+	"pwd" : "urn:localhost:u1",
+	"hserver" : "http://localhost:8080",
+	"adapters" : [
+			{
+  				"actor" : "urn:localhost:testChannel"
 			}
-			]
+		]
 }
     ```

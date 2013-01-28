@@ -32,6 +32,6 @@ You need to :
  * install the jar included in pom.xml
    - Windows with intellij : Maven Project -> HelloHttpBot -> Lifecycle -> install
    - Linux : 
-  	 1. Go to hubiquitus4java/Bots/HelloHttpBot
+  	 1. Go to hubiquitus4java/Bots/HelloHttpBot in terminal
   	 2. tap "mvn clean install"
  * run the project

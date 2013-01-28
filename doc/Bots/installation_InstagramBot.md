@@ -4,6 +4,7 @@ You need to :
   * [Install HubotSDK](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/HubotSDK/installation_HubotSDK.md)
   * Fill the file _config.txt_
     - Your _config.txt_ would look like:
+    - 
 ```js
   {
     "type": "com.mycompany.WordCount",
@@ -27,6 +28,7 @@ You need to :
     ]
 }
 ```
+
 Note: [Please see here for more information of instagram](http://instagram.com/developer/)
 
   * Install all the jar included in pom.xml

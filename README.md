@@ -2,11 +2,11 @@
 
 Hubiquitus4java is a set of Java components :
 
-* [Hubiquitus API](https://github.com/hubiquitus/hubiquitus4java/tree/master/hapi) : the Java bindings for the hubiquitus semantics
+* [Hubiquitus API](https://github.com/hubiquitus/hubiquitus4java/tree/master/hapi) : An API on Java that allows to access to our system Hubiquitus. We call it hAPI.
 
-* [HubotSDK](https://github.com/hubiquitus/hubiquitus4java/tree/master/HubotsSDK) : a kit for Java developers allowing rapid development of hubiquitus agents called hubots
+* [HubotSDK](https://github.com/hubiquitus/hubiquitus4java/tree/master/HubotsSDK) : A SDK that allows to develop hubiquitus agents called hubots
 
-* [Hubiquitus Components](https://github.com/hubiquitus/hubiquitus4java/tree/master/HubiquitusComponents) : HTwitterAPI-1.1, HFacebook and HGooglePlus. The API used for the corresponding bots.
+* [Hubiquitus Components](https://github.com/hubiquitus/hubiquitus4java/tree/master/HubiquitusComponents) : HTwitterAPI-1.1, HFacebook and HGooglePlus. The API used for the corresponding adapter in HubotSDK.
 
 * [Bots](https://github.com/hubiquitus/hubiquitus4java/tree/master/Bots) : it contains the sample bots you can lance for test.
 

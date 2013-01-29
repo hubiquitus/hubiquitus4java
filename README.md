@@ -2,7 +2,7 @@
 
 Hubiquitus4java is a set of Java components :
 
-* [Hubiquitus API](https://github.com/hubiquitus/hubiquitus4java/tree/master/hapi) : An API on Java that allows to access to our system Hubiquitus. We call it hAPI.
+* [Hubiquitus API](https://github.com/hubiquitus/hubiquitus4java/tree/master/hapi) : A Java API that allows to access to our system Hubiquitus. We call it hAPI.
 
 * [HubotSDK](https://github.com/hubiquitus/hubiquitus4java/tree/master/HubotsSDK) : A SDK that allows to develop hubiquitus agents called hubots
 

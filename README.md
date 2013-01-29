@@ -2,10 +2,13 @@
 
 Hubiquitus4java is a set of Java components :
 
-* Hubiquitus API : the Java bindings for the hubiquitus semantics
-* Hubot SDK : a kit for Java developers allowing rapid development of hubiquitus agents called hubots
-* Hubiquitus components : HTwitterAPI-1.1, HFacebook and HGooglePlus. The API used for the corresponding bots.
-* Bots : it contains the sample bots you can lance for test.
+* [Hubiquitus API](https://github.com/hubiquitus/hubiquitus4java/tree/master/hapi) : the Java bindings for the hubiquitus semantics
+
+* [HubotSDK](https://github.com/hubiquitus/hubiquitus4java/tree/master/HubotsSDK) : a kit for Java developers allowing rapid development of hubiquitus agents called hubots
+
+* [Hubiquitus Components](https://github.com/hubiquitus/hubiquitus4java/tree/master/HubiquitusComponents) : HTwitterAPI-1.1, HFacebook and HGooglePlus. The API used for the corresponding bots.
+
+* [Bots](https://github.com/hubiquitus/hubiquitus4java/tree/master/Bots) : it contains the sample bots you can lance for test.
 
 
 ## Prerequisite
@@ -14,10 +17,18 @@ Hubiquitus4java is a set of Java components :
 
 ## How to install
 
-Before you lance the bots for test, you have to install the hAPI and HubotSDK.
+First of all, clone the project.
+Tap the following command in terminal : 
+
+```js
+git clone git://github.com/hubiquitus/hubiquitus4java.git
+```
+
+Then install hAPI and HubotSDK : 
 
  * See [Installation of hAPI](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/hAPI/installation_hapi.md) to install hAPI.
- * See [Installation of HubotSDK](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/HubotSDK/installation_HubotSDK.md) to install HubotSDK.
+
+* See [Installation of HubotSDK](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/HubotSDK/installation_HubotSDK.md) to install HubotSDK.
 
 
 ## How to use

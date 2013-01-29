@@ -25,19 +25,19 @@ Before you lance the bots for test, you have to install the hAPI and HubotSDK.
 ### How to use hAPI
 
 
- * [Codes](https://github.com/maniadel/hubiquitus4java/blob/master/doc/Codes.md) : ConnectionStatus, ConnectionError, ResultStatus ... All the enumeration of Hubiquitus.
+ * [Codes](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/hAPI/Codes.md) : ConnectionStatus, ConnectionError, ResultStatus ... All the enumeration of Hubiquitus.
 
 
 
- * [Datamodel](https://github.com/maniadel/hubiquitus4java/blob/master/doc/hAPI_Datamodel.md) : Information about hAPI Datamodel.
+ * [Datamodel](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/hAPI/hAPI_Datamodel.md) : Information about hAPI Datamodel.
 
 
 
- * [hClient Functions](https://github.com/maniadel/hubiquitus4java/blob/master/doc/HClient_functions.md) : Connect, disconnect, builder ... All the function of the client.
+ * [hClient Functions](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/hAPI/HClient_functions.md) : Connect, disconnect, builder ... All the function of the client.
 
 
 
- * [Options](https://github.com/maniadel/hubiquitus4java/blob/master/doc/Options.md) : Information about options class.
+ * [Options](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/hAPI/Options.md) : Information about options class.
 
 
 

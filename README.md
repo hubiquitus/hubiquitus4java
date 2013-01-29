@@ -63,27 +63,29 @@ Then install hAPI and HubotSDK :
 
 The "Bots" folder contains five samples bots :
 
-* TwitterBot allows to retrive data from twitter and post a tweets. [Run the bot](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/Bots/installation_TwitterBot.md)
+* [HelloBot](https://github.com/hubiquitus/hubiquitus4java/tree/master/Bots/HelloBot) allows to retrive a string and publish it on a node.  [Run the bot](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/Bots/installation_HelloBot.md) 
 
-* FacebookBot allows to retrive data from facebook.  [Run the bot](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/Bots/installation_FacebookBot.md)
+* [HelloHttpBot](https://github.com/hubiquitus/hubiquitus4java/tree/master/Bots/HelloHttpBot) allows to retrive data from a url.  [Run the bot](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/Bots/installation_HelloHttpBot.md) 
 
-* InstagramBot allows to retrive data from instagram.  [Run the bot](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/Bots/installation_InstagramBot.md) 
+* [TwitterBot](https://github.com/hubiquitus/hubiquitus4java/tree/master/Bots/TwitterBot) allows to retrive data from twitter and post a tweets. [Run the bot](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/Bots/installation_TwitterBot.md)
 
-* GooglePlusBot allows to retrive data from googleplus.  [Run the bot](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/Bots/installation_GooglePlusBot.md) 
+* [FacebookBot](https://github.com/hubiquitus/hubiquitus4java/tree/master/Bots/FacebookBot) allows to retrive data from facebook.  [Run the bot](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/Bots/installation_FacebookBot.md)
 
-* HelloBot allows to retrive a string and publish it on a node.  [Run the bot](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/Bots/installation_HelloBot.md) 
+* [InstagramBot](https://github.com/hubiquitus/hubiquitus4java/tree/master/Bots/InstagramBot) allows to retrive data from instagram.  [Run the bot](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/Bots/installation_InstagramBot.md) 
 
-* HelloHttpBot allows to retrive data from a url.  [Run the bot](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/Bots/installation_HelloHttpBot.md) 
+* [GooglePlusBot](https://github.com/hubiquitus/hubiquitus4java/tree/master/Bots/GooglePlusBot) allows to retrive data from googleplus.  [Run the bot](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/Bots/installation_GooglePlusBot.md) 
+
+
 
 ### Examples
 
 The "Examples" folder content a sample exemples as :
 
-* TestClient allows to test a hubiquitus plateform. Click [here](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/Examples/TestClient.md) to see how to run the project.
+* [TestClient](https://github.com/hubiquitus/hubiquitus4java/tree/master/Examples/TestClient) allows to test a hubiquitus plateform.  [Run the example](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/Examples/TestClient.md)
 
-* HFacebook simple client allows to retrive data from facebook using HFacebook componement. Click [here](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/Examples/HFacebookSimpleClient.md) 
+* [HFacebook](https://github.com/hubiquitus/hubiquitus4java/tree/master/Examples/HFacebookSimpleClient) simple client allows to retrive data from facebook using HFacebook componement.  [Run the example](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/Examples/HFacebookSimpleClient.md) 
 
-* HTwitter Simples Clients allows to retrive data from twitter and post a tweets using HTwitterAPI-1.1. Click [here](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/Examples/HTwitterSimpleClient.md)
+* [HTwitter](https://github.com/hubiquitus/hubiquitus4java/tree/master/Examples/HTwitterSimplesClients) Simples Clients allows to retrive data from twitter and post a tweets using HTwitterAPI-1.1.  [Run the example](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/Examples/HTwitterSimpleClient.md)
 
-* HGooglePlus Simple client allows to retrive data from Instagram using HGooglePlus. Click [here](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/Examples/HGooglePlusSimpleClient.md)
+* [HGooglePlus](https://github.com/hubiquitus/hubiquitus4java/tree/master/Examples/HGooglePlusSimpleClient) Simple client allows to retrive data from Instagram using HGooglePlus.  [Run the example](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/Examples/HGooglePlusSimpleClient.md)
 

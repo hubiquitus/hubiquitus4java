@@ -92,3 +92,13 @@ The message received when you run the last exemple (asking for Cocacola page), i
     "tagline": "Open Happiness. The official Coca-Cola page on Google+."
 }
 ```
+
+
+## How to run the project
+
+  * Install all the jar included in pom.xml
+     - Windows with intellij : Maven Project -> HGooglePlusSampleclient -> Lifecyle -> install
+     - Linux : 
+     	1. Go to hubiquitus4java/Examples/HGooglePlusSampleclient in terminal
+     	2. tap "mvn clean install"
+  * Run project

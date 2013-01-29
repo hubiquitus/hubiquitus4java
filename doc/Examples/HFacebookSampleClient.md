@@ -50,3 +50,12 @@ The adequate pom.xml is :
 			<version>1.0.0</version>
 	</dependency>
 ```
+
+## How to run the project
+
+  * Install all the jar included in pom.xml
+     - Windows with intellij : Maven Project -> HFacebookSampleClient -> Lifecyle -> install
+     - Linux : 
+     	1. Go to hubiquitus4java/Examples/HFacebookSimpleClient in terminal
+     	2. tap "mvn clean install"
+  * Run project

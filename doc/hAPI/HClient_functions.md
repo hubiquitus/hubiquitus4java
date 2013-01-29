@@ -7,12 +7,14 @@ Connection status are notified through the HStatusDelegate defined by the onStat
 
 ```java
 public void connect(String publisher, String password, HOption options)
+public void connect(String publisher, String password, HOption options, JSONObject context)
 ```
 Where:
 
-* publisher : login of the publisher (ie : user@domain)
+* publisher : login of the publisher 
 * password : publisher's password
 * hOptions : hOptions object as defined in [HOptions](https://github.com/hubiquitus/hubiquitus4j/wiki/Options-v-0.5.0)
+* context : optional, the context you want to add.
 
 Note : if a technical disconnection is raised then the system will try to reconnect by itself automatically.
 

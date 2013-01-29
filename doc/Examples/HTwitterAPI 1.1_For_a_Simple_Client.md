@@ -269,3 +269,12 @@ public class TwitterSendTweet {
 
 }
 ```
+
+## How to run the project
+
+  * Install all the jar included in pom.xml
+     - Windows with intellij : Maven Project -> HTwitterSimpleClient -> Lifecyle -> install
+     - Linux : 
+     	1. Go to hubiquitus4java/Examples/HTwitterSimpleClient in terminal
+     	2. tap "mvn clean install"
+  * Run project

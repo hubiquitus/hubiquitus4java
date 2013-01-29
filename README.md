@@ -18,7 +18,7 @@ Hubiquitus4java is a set of Java components :
 ## How to install
 
 First of all, clone the project.
-Tap the following command in terminal : 
+Tap the following command in terminal(Linux) or in Powershell(Windows) : 
 
 ```js
 git clone git://github.com/hubiquitus/hubiquitus4java.git
@@ -28,7 +28,7 @@ Then install hAPI and HubotSDK :
 
  * See [Installation of hAPI](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/hAPI/installation_hapi.md) to install hAPI.
 
-* See [Installation of HubotSDK](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/HubotSDK/installation_HubotSDK.md) to install HubotSDK.
+ * See [Installation of HubotSDK](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/HubotSDK/installation_HubotSDK.md) to install HubotSDK.
 
 
 ## How to use
@@ -70,20 +70,31 @@ Then install hAPI and HubotSDK :
 
 ## The test projects
 
+### Bots
+
 The "Bots" folder contains five samples bots :
 
 * TwitterBot allows to retrive data from twitter and post a tweets. Click [here](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/Bots/installation_TwitterBot.md) to see how to run the bot.
+
 * FacebookBot allows to retrive data from facebook. Click [here](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/Bots/installation_FacebookBot.md) to see how to run the bot.
+
 * InstagramBot allows to retrive data from instagram. Click [here](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/Bots/installation_InstagramBot.md) to see how to run the bot.
+
 * GooglePlusBot allows to retrive data from googleplus. Click [here](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/Bots/installation_GooglePlusBot.md) to see how to run the bot.
+
 * HelloBot allows to retrive a string and publish it on a node. Click [here](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/Bots/installation_HelloBot.md) to see how to run the bot.
+
 * HelloHttpBot allows to retrive data from a url. Click [here](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/Bots/installation_HelloHttpBot.md) to see how to run the bot.
 
+### Examples
 
 The "Examples" folder content a sample exemples as :
 
 * TestClient allows to test a hubiquitus plateform. Click [here](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/Examples/TestClient.md) to see how to run the project.
+
 * HFacebook simple client allows to retrive data from facebook using HFacebook componement. Click [here](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/Examples/HFacebookSimpleClient.md) to see how to run the project.
+
 * HTwitter Simples Clients allows to retrive data from twitter and post a tweets using HTwitterAPI-1.1. Click [here](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/Examples/HTwitterSimpleClient.md) to see how to run the project.
+
 * HGooglePlus Simple client allows to retrive data from Instagram using HGooglePlus. Click [here](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/Examples/HGooglePlusSimpleClient.md) to see how to run the project.
 

@@ -25,7 +25,7 @@ Currently supported connection error are:
 ```java
 public enum ConnectionError {
 	NO_ERROR(0),
-	JID_MALFORMAT(1),
+	URN_MALFORMAT(1),
 	CONN_TIMEOUT(2),
 	AUTH_FAILED(3),
 	ALREADY_CONNECTED(5),
@@ -35,7 +35,7 @@ public enum ConnectionError {
 }
 ```
 
-* (1) ID_MALFORMAT : Publisher name should comply with jid format (ie : me@my_domain or me@my_domain/resource)
+* (1) URN_MALFORMAT : Publisher name should comply with urn format (ie : urn:domain:username or urn:domain:username/resource)
 * (2) CONN_TIMEOUT : Happens connection take too long to connect
 * (3) AUTH_FAILED : Authentification failure
 * (5) ALREADY_CONNECTED : Happens if trying to reconnect while already connected

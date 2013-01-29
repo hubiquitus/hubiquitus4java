@@ -43,7 +43,19 @@ Before you lance the bots for test, you have to install the hAPI and HubotSDK.
 
 ### How to use HubotSDK
 
-Coming soon ...
+
+
+ * [HubotSDK Adapters](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/HubotSDK/HubotsdkAdapters.md) : Information about the adapters of hubot.
+
+
+
+ * [HubotSDK Introduction](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/HubotSDK/HubotSDKIntroduction.md) : Introduction of a hubot.
+
+
+
+ * [HubotSDK API](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/HubotSDK/HubotSDK_API.md) : Information about the API.
+
+
 
 ## The test projects
 

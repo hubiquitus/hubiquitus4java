@@ -72,7 +72,7 @@ The "Bots" folder contains five samples bots :
 The "Examples" folder content a sample exemples as :
 
 * TestClient allows to test a hubiquitus plateform. Click [here](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/Examples/TestClient.md) to see how to run the project.
-* HFacebook simple client allows to retrive data from facebook using HFacebook componement. Click [here](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/Examples/HFacebookSampleClient.md) to see how to run the project.
-* HTwitter Simples Clients allows to retrive data from twitter and post a tweets using HTwitterAPI-1.1. Click [here](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/Examples/HTwitterAPI%201.1_For_a_Simple_Client.md) to see how to run the project.
-* HGooglePlus Simple client allows to retrive data from Instagram using HGooglePlus. Click [here](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/Examples/HGooglePlusSampleClient.md) to see how to run the project.
+* HFacebook simple client allows to retrive data from facebook using HFacebook componement. Click [here](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/Examples/HFacebookSimpleClient.md) to see how to run the project.
+* HTwitter Simples Clients allows to retrive data from twitter and post a tweets using HTwitterAPI-1.1. Click [here](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/Examples/HTwitterSimpleClient.md) to see how to run the project.
+* HGooglePlus Simple client allows to retrive data from Instagram using HGooglePlus. Click [here](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/Examples/HGooglePlusSimpleClient.md) to see how to run the project.
 

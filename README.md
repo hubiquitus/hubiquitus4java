@@ -60,6 +60,17 @@ or include the dependency in your Maven configuration:
 
 ### How to use HubotSDK
 
+Copy the ```HubotsSDK-0.6.0.jar``` in _C:\Users\[your account]\.m2\repository\org\hubiquitus\hubiquitus4java\HubotsSDK\0.6.0_ to your project 
+or include the dependency in your Maven configuration:
+
+```xml
+	<dependency>
+			<groupId>org.hubiquitus.hubiquitus4java</groupId>
+			<artifactId>HubotsSDK</artifactId>
+			<version>0.6.0</version>
+	</dependency>
+```
+
  * [HubotSDK Introduction](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/HubotSDK/HubotSDKIntroduction.md) : Introduction of a hubot.
 
  * [HubotSDK API](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/HubotSDK/HubotSDK_API.md) : Information about the API.

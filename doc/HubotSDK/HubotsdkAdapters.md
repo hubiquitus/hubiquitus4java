@@ -23,7 +23,7 @@ Populates the inbox with hmessages received from a suscribed hchannel. This Adap
 ### Configuration Adapter : 
 ```js
 {
-    "actor" : "urn:domain:"
+    "actor" : "urn:domain:testChannel"
 }
 ```
 where :
@@ -35,7 +35,6 @@ Populates the inbox with a dedicated hMessage with a configured payload on timeo
 ### Configuration Adapter : 
 ```js
 {
-      "actor" : "myTimer@myDomain",
       "type" : "org.hubiquitus.hubotsdk.adapters.HTimerAdapterInbox",
       "properties" : {
               "mode" : "millisecond", 
@@ -44,7 +43,6 @@ Populates the inbox with a dedicated hMessage with a configured payload on timeo
 }
 or
 {
-      "actor" : "myTimer@myDomain",
       "type" : "org.hubiquitus.hubotsdk.adapters.HTimerAdapterInbox",
       "properties" : {
               "mode" : "crontab", 
@@ -63,7 +61,6 @@ Note : see [crobtab format](http://quartz-scheduler.org/documentation/quartz-1.x
 ### Configuration Adapter : 
 ```js
 {
-    "actor" : "myHttpAdapterInbox@myDomain", 
     "type" : "org.hubiquitus.hubotsdk.adapters.HHttpAdapterInbox",
     "properties" : {
           "host" : "0.0.0.0",
@@ -85,10 +82,12 @@ Posts the message of the outbox to a remote HTTP entity
 ### Configuration Adapter : 
 ```js
 {
-    "actor" : "myHttpAdapterOutbox@myDomain", 
+    "actor" : "myHttpAdapterOutbox", 
     "type" : "org.hubiquitus.hubotsdk.adapters.HHttpAdapterOutbox",
 }
 ```
+Where : 
+* actor : the name of your outbox adapter.
 
 ### HHttpData : 
 ```js
@@ -151,7 +150,6 @@ Where :
 #### Configuration Adapter : 
 ```js
 {
-    "actor" : "myTwitterAdapterInbox@twitter.com", 
     "type" : "org.hubiquitus.hubotsdk.adapters.HTwitterAdapterInbox",
     "properties" : {
                       "consumerKey" : "",
@@ -179,7 +177,7 @@ Tweets the content of an outbox to a twitter account.
 #### Configuration Adapter : 
 ```js
 {
-    "actor" : "myTwitterAdapterOutbox@twitter.com", 
+    "actor" : "myTwitterAdapterOutbox", 
     "type" : "org.hubiquitus.hubotsdk.adapters.HTwitterAdapterOutbox",
     "properties" : {
                       "consumerKey" : "",
@@ -301,7 +299,6 @@ The adpater configuration is represented  as following:
 	"hserver" : "YourEndPoint",
 	"adapters" : [ 
 		{
-			"actor" : "HGooglePlusOneCercledInBox@googlePlus", 
 			"type" :  "org.hubiquitus.hubotsdk.adapters.HGooglePlusOneCercledInBox",
 			"properties" : {							
 				"proxyHost":"yourProxyHost",
@@ -347,7 +344,6 @@ The configuration is represented as following:
     "hserver" : "EndPoint",
     "adapters": [
         {
-            "actor": "HGooglePlusActivityInbox@googlePlus",
             "type": "org.hubiquitus.hubotsdk.adapters.HGooglePlusActivityInbox",
             "properties": {
                 "proxyHost": "yourProxyHost",
@@ -460,7 +456,7 @@ The HFacebook adpter is represented as following
 	"hserver" : "YourEndPoint",
 	
 	"adapters" : [ 
-		{	"actor" : "yourfacebook@facbook.com", 
+		{	
 			"type" :  "org.hubiquitus.hubotsdk.adapters.HFacebookAdapterInbox",
 			"properties" : {
 				"proxyHost":"YourProxyHost",
@@ -512,7 +508,7 @@ We use this adapter to retrieve data from Instagram API in "Real Time". The adpa
     "hserver": "EndPoint",
     "adapters": [
         {
-            "actor": "HInstagram@Instagram",
+            
             "type": "org.hubiquitus.hubotsdk.adapters.HInstagramRealTimeInbox",
             "properties": {
                 "port": yourPort,

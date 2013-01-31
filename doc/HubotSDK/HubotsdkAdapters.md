@@ -23,7 +23,7 @@ Populates the inbox with hmessages received from a suscribed hchannel. This Adap
 ### Configuration Adapter : 
 ```js
 {
-    "actor" : "#myChan@myDomain"
+    "actor" : "urn:domain:"
 }
 ```
 where :

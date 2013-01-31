@@ -373,29 +373,29 @@ public class HCondition extends JSONObject {
 
 Samples : 
    { } /* no condition equals to always true */
-   { “eq” : { “author” :  “u1@myDomain.com” }}
-   { “ne” : { “author” :  “u1@myDomain.com” }}
+   { “eq” : { “author” :  “urn:domain:u1” }}
+   { “ne” : { “author” :  “urn:domain:u1” }}
    { “gt” : { “priority” : 1 }}
    { “gte” : { “priority” : 1 }}
    { “lt” : { “priority” : 3 }}
    { “lte” : { “priority” : 3 }}
 
-   { “in” : { “author” : [ “u1@myDomain.com” , “u2@myDomain.com” ] } }
-   { “nin” : { “author” : [ “u1@myDomain.com” , “u2@myDomain.com” ] } }
+   { “in” : { “author” : [ “urn:domain:u1” , “urn:domain:u2” ] } }
+   { “nin” : { “author” : [ “urn:domain:u1” , “urn:domain:u2” ] } }
 
    { “and” : [
-       { “in” : { “author” : [ “u1@myDomain.com” , “u2@myDomain.com” ] } },
+       { “in” : { “author” : [ “urn:domain:u1” , “urn:domain:u2” ] } },
        { “lte” : { “priority” : 3 }}
    ] }
 
    { “or” : [
-       { “in” : { “author” : [ “u1@myDomain.com” , “u2@myDomain.com” ] } },
+       { “in” : { “author” : [ “urn:domain:u1” , “urn:domain:u2” ] } },
        { “lte” : { “priority” : 3 }}
    ] }
 
    { “not “ :
       { “and” : [
-          { “in” : { “author” : [ “u1@myDomain.com” , “u2@myDomain.com” ] } },
+          { “in” : { “author” : [ “urn:domain:u1” , “urn:domain:u2” ] } },
           { “lte” : { “priority” : 3 }}
           ]
        }

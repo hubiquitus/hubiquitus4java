@@ -36,7 +36,8 @@ You need to :
 Note: [Please see here for more information of instagram](http://instagram.com/developer/)
 
   * Install all the jar included in pom.xml
-    - Windows with intellij : Maven Project -> InstagramBot -> Lifecycle -> install
+    - Windows with intellij :
+      Tool Button(on right side) : Maven Project -> InstagramBot -> Lifecycle -> install
     - Linux :
       1. Go to hubiquitus4java/Bots/InstagramBot in terminal
       2. tap "mvn clean install"

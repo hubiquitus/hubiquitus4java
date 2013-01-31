@@ -55,7 +55,8 @@ You need to :
   Note: [please see here to get your authentication of twitter application](https://dev.twitter.com/). 
   
  * Install all the jar incluede in pom.xml
-    - Windows with intellij : Maven project -> TwitterBot -> Lifecycle -> install
+    - Windows with intellij : 
+    	Tool Button(on right side) :  Maven project -> TwitterBot -> Lifecycle -> install
     - Linux : 
     	 1. Go to hubiquitus4java/Bots/TwitterBot in terminal
     	 2. tap "mvn clean install"

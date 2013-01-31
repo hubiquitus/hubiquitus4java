@@ -107,7 +107,7 @@ Nominal response : a hMessage with an hResult payload with no error.
 public void subscribe(String actor, HMessageDelegate messageDelegate) throws MissingAttrException
 ```
 Where:
-* actor : The channel jid to subscribe to.(ie : #test@domain”)
+* actor : The channel urn to subscribe to.(ie : #test@domain”)
 * messageDelegate : Delegate that will be notify when command result is available. See send for HMessageDelegate structure
 
 ```java
@@ -157,7 +157,7 @@ or
 public void getLastMessages(String actor, HMessageDelegate messageDelegate) throws MissingAttrException
 ```
 Where:
-* actor : The channel jid of the messages. Mandatory.
+* actor : The channel urn of the messages. Mandatory.
 * nbLastMsg : the number of message request to the server. if <= 0, the default value found in the channel header will be used and as fall back a default value of 10.
 * messageDelegate : Delegate that will be notify when command result is available. See command for HMessageDelegate structure
 

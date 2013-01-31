@@ -29,7 +29,8 @@ You need to:
 
 
   * Install all the jar included in pom.xml
-    - Windows with intellij : Maven Project -> FacebookBot -> Lifecycle -> install
+    - Windows with intellij : 
+    	Tool Button(on right side) : Maven Project -> FacebookBot -> Lifecycle -> install
     - Linux : 
         1. Go to hubiquitus4java/Bots/Facebook in terminal
         2. tap "mvn clean install"

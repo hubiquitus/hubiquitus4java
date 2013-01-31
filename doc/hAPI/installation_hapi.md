@@ -2,7 +2,7 @@
 
 ### Windwos 
 
-We tested with [intellij IDEA](http://www.jetbrains.com/idea/).
+We tested with [intellij IDEA 12.0.2](http://www.jetbrains.com/idea/).
 
 1. Open intellij and open the following file hubiquitus4java/hapi/pom.xml.
 2. Maven Projects -> hAPI -> Lifecycle -> install.

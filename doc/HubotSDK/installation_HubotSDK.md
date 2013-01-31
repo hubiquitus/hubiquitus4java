@@ -11,7 +11,7 @@ To install HubotSDK, you have to :
 We tested with [intellij IDEA](http://www.jetbrains.com/idea/)
 
  1. Open intellij and import the hubiquitus4java/HubotSDK/pom.xml.
- 2. Maven Projects -> HubotSDK -> Lifecycle -> install.
+ 2. Tool Button(on right side) : Maven Projects -> HubotSDK -> Lifecycle -> install.
 
 Now the HubotSDK is ready to be used. All the jars will be saved by default in C:/Users/[your account]/.m2/repository
 

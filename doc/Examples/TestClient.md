@@ -7,6 +7,6 @@ Before you can run the project
  * you have to install all the jar included in the pom.xml
     - Windows with intellij : maven project -> TestClient -> install
     - Linux : 
-         1. Go to hubiquitus4java/Examples/TestClient
+         1. Go to hubiquitus4java/Examples/TestClient in terminal
          2. tap "mvn clean install"
  * run project

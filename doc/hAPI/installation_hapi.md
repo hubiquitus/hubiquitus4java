@@ -1,6 +1,6 @@
 ## Intstallation of hAPI
 
-### Windwos 
+### Windows 
 
 We tested with [intellij IDEA 12.0.2](http://www.jetbrains.com/idea/).
 

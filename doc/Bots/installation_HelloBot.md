@@ -22,7 +22,8 @@ You need to:
 
  * install the jar included in pom.xml
    - Windows with intellij :
-            Tool Button(on right side) : Maven Project -> HelloBot -> Lifecycle -> install
+            
+          Tool Button(on right side) : Maven Project -> HelloBot -> Lifecycle -> install
    - Linux : 
   	 1. Go to hubiquitus4java/Bots/HelloBot in terminal
   	 2. tap "mvn clean install"

@@ -6,12 +6,12 @@ Establishes a connection to hNode to allow the reception and sending of messages
 Connection status are notified through the HStatusDelegate defined by the onStatus function.
 
 ```java
-public void connect(String publisher, String password, HOption options)
-public void connect(String publisher, String password, HOption options, JSONObject context)
+public void connect(String login, String password, HOption options)
+public void connect(String login, String password, HOption options, JSONObject context)
 ```
 Where:
 
-* publisher : login of the publisher 
+* login : login of the publisher 
 * password : publisher's password
 * hOptions : hOptions object as defined in [HOptions](https://github.com/hubiquitus/hubiquitus4j/wiki/Options-v-0.5.0)
 * context : optional, the context you want to add.
@@ -270,13 +270,13 @@ public class HMessageOptions {
 	private String ref = null;
 	private String convid = null;
 	private HMessagePriority priority = null;
-	private DateTime relevance = null;
-	private int relevanceOffset = 0;
+	private long relevance = 0;
+	private Integer relevanceOffset = null;
 	private Boolean persistent = null;
 	private HLocation location = null;
 	private String author = null;
 	private JSONObject headers = null;
-	private DateTime published = null;
+	private long published = 0;
 	private Integer timeout = 0;
 }
 ```
@@ -284,13 +284,13 @@ Where (All fields are optional) :
  * ref : The msgid of the message refered to
  * convid : conversation id
  * priority : priority of the message. If UNDEFINED, priority lower to 0. See HMessagePrioity in codes and enum section.
- * relevance : Date and time until which the message is relevant
+ * relevance : Date and time in timestamps format until which the message is relevant
  * relevanceOffset : If you use this parameter, it will override the relevance one by updating the date-time for the relevance of the hMessage.
  * persistent : do the server need to persist the hmessage.
  * location : The location of the HMessage. See HLocation in hAPI DataModel
  * author : the author of the HMessage
  * headers : the headers of the HMessage. See HHeader in hAPI DataModel
- * published : Specify a publishing date.
+ * published : Specify a publishing date in timestamps.
  * timeout : Time (in ms) to wait for a response before hAPI sends a timeout.
 
 #### BuildConvState
@@ -354,12 +354,13 @@ Where:
 Build a hMessage with a hCommand payload
 
 ```java
-public HMessage buildCommand(String actor, String cmd, JSONObject params, HMessageOptions options) throws MissingAttrException 
+public HMessage buildCommand(String actor, String cmd, JSONObject params, HCondition filter, HMessageOptions options) throws MissingAttrException 
 ```
 Where:
 * actor : The actor for the hMessage. Mandatory.
 * cmd : The name of the command.
 * params : Parameters of the command. Not mandatory.
+* filter : The filter you want to add, null if there is no filter.
 * options : hMessage creation options. See buildMessage for hMessageOptions Structure.
 * return : A hMessage with a hCommand payload.
 

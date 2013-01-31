@@ -55,8 +55,10 @@ public class HMessage extends JSONObject {
 	public HMessagePriority getPriority();
 	public void setPriority(HMessagePriority priority);
 	
-	public DateTime getRelevance();
-	public void setRelevance(DateTime relevance);
+	public long getRelevance();
+	public Date getRelevanceAsDate();
+	public void setRelevance(long relevance);
+	public void setRelevance(Date relevance);
 	
 	public Boolean getPersistent();
 	public void setPersistent(Boolean _persistent);
@@ -70,8 +72,10 @@ public class HMessage extends JSONObject {
 	public String getPublisher();
 	public void setPublisher(String publisher);
 	
-	public DateTime getPublished();
-	public void setPublished(DateTime published);
+	public long getPublished();
+	public Date getPublishedAsDate();
+	public void setPublished(long published);
+	public void setPublished(Date published);
 
 	public JSONObject getHeaders();
 	public void setHeaders(JSONObject headers);
@@ -104,8 +108,10 @@ public class HMessage extends JSONObject {
         public void setPayload(HResult payload);
         public void setPayload(HCommand payload);
         
-        public DateTime getSent();
-        public void setSent(DateTime sent);
+        public long getSent();
+        public Date getSentAsDate();
+        public void setSent(long sent);
+        public void setSent(Date sent);
         
         public int getTimeout();
         public void setTimeout(Integer timeout);
@@ -126,7 +132,7 @@ Where :
 * headers : A Headers object attached to this message. It is a key-value pair map. It is possible to not specify any header.
 * payload : The content of the message.
 * timeout : The timeout to get an answer to the hMessage. The hAPI will manage the value and response messages will be sent through callback set on send command.
-* sent : Set by the hAPI when sending the message. As the published attribute can contain the original creation date of the information know by the author, this attribute contains the creation datetime of the hMessage
+* sent : Set by the hAPI when sending the message. As the published attribute can contain the original creation date of the information know by the author, this attribute contains the creation datetime in timestamps format of the hMessage
 
 
 

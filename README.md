@@ -82,7 +82,7 @@ or include the dependency in your Maven configuration:
  
 
 
-## The test projects
+## Some examples
 
 ### Bots
 

@@ -46,6 +46,7 @@ or include the dependency in your Maven configuration:
 </dependency>
 ```
 
+#### API Reference :
 
  * [hClient Functions](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/hAPI/HClient_functions.md) : Connect, disconnect, builder ... All the function of the client.
 

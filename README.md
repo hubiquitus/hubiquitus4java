@@ -35,7 +35,7 @@ Then install hAPI and HubotSDK :
 
 ### How to use hAPI
 
-Copy the hAPI-0.6.0.jar in _C:\Users\[your account]\.m2\repository\org\hubiquitus\hubiquitus4java\hAPI\0.6.0_ to your project 
+Copy the ```hAPI-0.6.0.jar``` in _C:\Users\[your account]\.m2\repository\org\hubiquitus\hubiquitus4java\hAPI\0.6.0_ to your project 
 or include the dependency in your Maven configuration:
 
 ```xml
@@ -46,7 +46,7 @@ or include the dependency in your Maven configuration:
 </dependency>
 ```
 
-#### API Reference :
+#### hAPI Reference :
 
  * [hClient Functions](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/hAPI/HClient_functions.md) : Connect, disconnect, builder ... All the function of the client.
 
@@ -70,6 +70,8 @@ or include the dependency in your Maven configuration:
 			<version>0.6.0</version>
 	</dependency>
 ```
+
+#### HubotSDK Reference :
 
  * [HubotSDK Introduction](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/HubotSDK/HubotSDKIntroduction.md) : Introduction of a hubot.
 

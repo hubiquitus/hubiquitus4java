@@ -40,7 +40,7 @@ A simple example of config file without adapter. Sure, the HubotAdapter is provi
 ```
 {
 "type" : "com.mycompany.WordCount",
-"actor" : "mybot@myDomain.com",
+"actor" : "urn:domain:mybot",
 "pwd" : "MotDePasse",
 "hserver" : "http://localhost:8080"
 }
@@ -52,19 +52,19 @@ Another sample example of config file
 ```
 {
     "type" : "com.mycompany.WordCount",
-    "actor" : "mybot@myDomain.com",
+    "actor" : "urn:domain:mybot",
     "pwd" : "MotDePasse",
     "hserver":"http://localhost:8080",
     "filter" : {"in" : {"publisher" : ["u1@myDomain.com", "u2@myDomain.com"]}},
     "adapters" : [ 
-                 {"actor" : "#myChan1@myDomain.com"},
-                 {"actor" : "#myChan2@myDomain.com"}
+                 {"actor" : "urn:domain:myChan1"},
+                 {"actor" : "urn:domain:myChan2"}
     ]
 }
 ```
 
 Note: 
-In this sample, the hubot will receive some hMessage only if the publisher is u1 or u2 and if they publish a hMessage directly to “myBot” or through the channel “#myChan” or “#myChan2”. 
+In this sample, the hubot will receive some hMessage only if the publisher is u1 or u2 and if they publish a hMessage directly to “myBot” or through the channel “myChan1” or “myChan2”. 
 
 You can modifie your adapter properties. For it, you should use this method :
 

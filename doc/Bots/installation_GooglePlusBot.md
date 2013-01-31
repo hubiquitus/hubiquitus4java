@@ -28,7 +28,8 @@ You need to :
 
 Note : [please see here for more information of G+](https://developers.google.com/+/).
   * Install all the jar included in pom.xml
-    - Windows with intellij : Maven Project -> GooglePlusBot -> Lifecycle ->install
+    - Windows with intellij : 
+        Tool Button(on right side) : Maven Project -> GooglePlusBot -> Lifecycle ->install
     - Linux : 
         1. Go to hubiquitus4java/Bots/GooglePlusBot in terminal
         2. tap "mvn clean install"

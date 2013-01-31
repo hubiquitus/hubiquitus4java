@@ -97,7 +97,7 @@ The message received when you run the last exemple (asking for Cocacola page), i
 ## How to run the project
 
   * Install all the jar included in pom.xml
-     - Windows with intellij : Tool Button(on right side) -> Maven Project -> HGooglePlusSimpleclient -> Lifecyle -> install
+     - Windows with intellij : Tool Button(on right side) : Maven Project -> HGooglePlusSimpleclient -> Lifecyle -> install
      - Linux : 
      	1. Go to hubiquitus4java/Examples/HGooglePlusSimpleclient in terminal
      	2. tap "mvn clean install"

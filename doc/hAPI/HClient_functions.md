@@ -70,9 +70,9 @@ _The client MUST be connected_
 
 The hAPI sends the hMessage to the hserver which transfer it to the specified actor
 The hserver will perform one of the following actions :
-* If the actor is a channel (ie : #channelName@domain) the hserver will perform a publish operation of the provided hMessage to the channel and send an hMessage with hResult payload containing the published message and cmd name set with hsend to acknowledge publishing
+* If the actor is a channel (ie : urn:domain:channelName) the hserver will perform a publish operation of the provided hMessage to the channel and send an hMessage with hResult payload containing the published message and cmd name set with hsend to acknowledge publishing
 * If the actor is either ‘session’ and payload type is ‘hCommand’ the server will handle it. In other cases, it will send an hMessage with a hResult error NOT_AUTHORIZED.
-* If the actor is a jid, hserver will relay the message to the relevant actor.
+* If the actor is a urn, hserver will relay the message to the relevant actor.
 
 Nominal response :
 * If callback provided, an hMessage referring to sent message (eg : ref = hAPI client  msgid of sent message).

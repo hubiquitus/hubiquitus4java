@@ -13,7 +13,7 @@ Where:
 
 * login : login of the publisher 
 * password : publisher's password
-* hOptions : hOptions object as defined in [HOptions](https://github.com/hubiquitus/hubiquitus4j/wiki/Options-v-0.5.0)
+* hOptions : hOptions object as defined in [HOptions](https://github.com/hubiquitus/hubiquitus4java/blob/master/doc/hAPI/Options.md)
 * context : optional, the context you want to add.
 
 Note : if a technical disconnection is raised then the system will try to reconnect by itself automatically.

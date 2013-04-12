@@ -76,7 +76,6 @@ public class MainPanel extends JPanel implements HStatusDelegate,
 	private JTextField endPointField = new JTextField("http://localhost:8080");
 	private JTextField actorField = new JTextField("urn:localhost:testChannel");
 	private JTextField messageField = new JTextField("test");
-	private JTextField nbLastMessagesField = new JTextField("");
 	private JTextField convidField = new JTextField("");
 	private JTextField convstateField = new JTextField("");
 	private JTextField relevantField = new JTextField("");
@@ -91,16 +90,11 @@ public class MainPanel extends JPanel implements HStatusDelegate,
 	private JButton subscribeButton = new JButton("subscribe");
 	private JButton unsubscribeButton = new JButton("unsubscribe");
 	// private JButton publishButton = new JButton("publish");
-	private JButton getLastMessagesButton = new JButton("getLstMsg");
 	private JButton getSubscriptionsButton = new JButton("getSubs");
-	private JButton getThreadButton = new JButton("getThread");
-	private JButton getThreadsButton = new JButton("getThreads");
 	private JButton pubConvStateButton = new JButton("pubConvState");
 	private JButton setFilterButton = new JButton("setFilter");
 //	private JButton listFiltersButton = new JButton("listFilters");
 	private JButton unsetFilterButton = new JButton("unsetFilter");
-	private JButton getRelevantMessagesButton = new JButton(
-			"getRelevantMessages");
 	private JButton cleanButton = new JButton("Clean");
 
 	// private JRadioButton xmppRadioButton = new JRadioButton("XMPP");
@@ -154,8 +148,6 @@ public class MainPanel extends JPanel implements HStatusDelegate,
 		// paramsPanel.add(serverPortField);
 		paramsPanel.add(new JLabel("Actor"));
 		paramsPanel.add(actorField);
-		paramsPanel.add(new JLabel("nbLastMessages"));
-		paramsPanel.add(nbLastMessagesField);
 		paramsPanel.add(new JLabel("Message"));
 		paramsPanel.add(messageField);
 		paramsPanel.add(new JLabel("convid"));
@@ -190,15 +182,11 @@ public class MainPanel extends JPanel implements HStatusDelegate,
 		controlsPanel.add(subscribeButton);
 		controlsPanel.add(unsubscribeButton);
 		// controlsPanel.add(publishButton);
-		controlsPanel.add(getLastMessagesButton);
 		controlsPanel.add(getSubscriptionsButton);
-		controlsPanel.add(getThreadButton);
-		controlsPanel.add(getThreadsButton);
 		controlsPanel.add(pubConvStateButton);
 		controlsPanel.add(setFilterButton);
 //		controlsPanel.add(listFiltersButton);
 		controlsPanel.add(unsetFilterButton);
-		controlsPanel.add(getRelevantMessagesButton);
 		controlsPanel.add(cleanButton);
 
 		// Initialization of the TextArea
@@ -225,18 +213,12 @@ public class MainPanel extends JPanel implements HStatusDelegate,
 		subscribeButton.addMouseListener(new SubscribeButtonListener());
 		unsubscribeButton.addMouseListener(new UnsubscribeButtonListener());
 		// publishButton.addMouseListener(new PublishButtonListener());
-		getLastMessagesButton
-				.addMouseListener(new GetLastMessagesButtonListener());
 		getSubscriptionsButton
 				.addMouseListener(new GetSubscriptionButtonListener());
-		getThreadButton.addMouseListener(new GetThreadButtonListener());
-		getThreadsButton.addMouseListener(new GetThreadsButtonListener());
 		pubConvStateButton.addMouseListener(new PubConvStateButtonListener());
 		setFilterButton.addMouseListener(new SetFilterListener());
 //		listFiltersButton.addMouseListener(new ListFiltersListener());
 		unsetFilterButton.addMouseListener(new UnsetFilterListener());
-		getRelevantMessagesButton
-				.addMouseListener(new GetRelevantMessagesListener());
 		cleanButton.addMouseListener(new CleanButtonListener());
 
 	}
@@ -282,7 +264,7 @@ public class MainPanel extends JPanel implements HStatusDelegate,
 				connectedCB.connect(login, password);
 			}
 			
-		}
+	}
 		
 		
 	
@@ -352,7 +334,6 @@ public class MainPanel extends JPanel implements HStatusDelegate,
 		}
 	}
 
-
 	// Listener of button clean
 	class CleanButtonListener extends MouseAdapter {
 		public void mouseClicked(MouseEvent event) {
@@ -385,30 +366,6 @@ public class MainPanel extends JPanel implements HStatusDelegate,
 		}
 	}
 
-
-
-	// Listener of button publish
-	class GetLastMessagesButtonListener extends MouseAdapter {
-		public void mouseClicked(MouseEvent event) {
-			String actor = actorField.getText();
-			try {
-				int nbLastMessage = Integer.parseInt(nbLastMessagesField
-						.getText());
-				if (nbLastMessage > 0) {
-					client.getLastMessages(actor, nbLastMessage, outerClass);
-				} else {
-					client.getLastMessages(actor, outerClass);
-				}
-			} catch (Exception e) {
-				try {
-					client.getLastMessages(actor, outerClass);
-				} catch (MissingAttrException e1) {
-					
-				}
-			}
-		}
-	}
-
 	// Listener of button getsubscriptions
 	class GetSubscriptionButtonListener extends MouseAdapter {
 		public void mouseClicked(MouseEvent event) {
@@ -416,32 +373,6 @@ public class MainPanel extends JPanel implements HStatusDelegate,
 				client.getSubscriptions(outerClass);
 			} catch (MissingAttrException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-	}
-
-	// Listener of button getThread
-	class GetThreadButtonListener extends MouseAdapter {
-		public void mouseClicked(MouseEvent event) {
-			String actor = actorField.getText();
-			String convid = convidField.getText();
-			try {
-				client.getThread(actor, convid, outerClass);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-	}
-
-	// Listener of button getThreads
-	class GetThreadsButtonListener extends MouseAdapter {
-		public void mouseClicked(MouseEvent event) {
-			String actor = actorField.getText();
-			String status = convstateField.getText();
-			try {
-				client.getThreads(actor, status, outerClass);
-			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
@@ -531,19 +462,6 @@ public class MainPanel extends JPanel implements HStatusDelegate,
 				e.printStackTrace();
 			}
 		 }
-	}
-
-	// Listener of button getRelevantMessages
-	class GetRelevantMessagesListener extends MouseAdapter {
-		public void mouseClicked(MouseEvent event) {
-			String actor = actorField.getText();
-			try {
-				client.getRelevantMessages(actor, outerClass);
-			} catch (MissingAttrException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
 	}
 
 	/* Override for Delegate */

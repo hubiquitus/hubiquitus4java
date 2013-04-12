@@ -139,28 +139,6 @@ Where:
 * actor : The channel to unsubscribe from.
 * messageDelegate : Delegate that will be notify when command result is available. See command for HMessageDelegate structure
 
-### GetLastMessages
-
-_The client MUST be connected_
-
-Demands the channel a list of the last messages saved. The requester must be in the channel’s subscribers list.
-
-Nominal response: a hMessage with an hResult having an array of hMessages.
-
-If nbLastMsg is not provided, the default value found in the channel header will be used and as fall back a default value of 10.
-
-```java
-public void getLastMessages(String actor, int nbLastMsg, HMessageDelegate messageDelegate) throws MissingAttrException
-```
-or 
-```java
-public void getLastMessages(String actor, HMessageDelegate messageDelegate) throws MissingAttrException
-```
-Where:
-* actor : The channel urn of the messages. Mandatory.
-* nbLastMsg : the number of message request to the server. if <= 0, the default value found in the channel header will be used and as fall back a default value of 10.
-* messageDelegate : Delegate that will be notify when command result is available. See command for HMessageDelegate structure
-
 ### GetSubscriptions
 
 _The client MUST be connected_
@@ -174,53 +152,6 @@ public void getSubscriptions(HMessageDelegate messageDelegate) throws MissingAtt
 ```
 Where:
 * messageDelegate : Delegate that will be notify when command result is available. See command for HMessageDelegate structure
-
-### GetThread
-
-_The client MUST be connected_
-
-Demands to the channel the list of messages correlated by the convid value.
-Nominal response : hMessage with an hResult payload where the status is 0 and result is an array of hMessage.
-
-```java
-public void getThread(String actor, String convid, HMessageDelegate messageDelegate) throws MissingAttrException
-```
-
-Where:
-* actor : The channel where the conversations are searched. Mandatory.
-* convid : Convid searched. Mandatory.
-* messageDelegate : Delegate that will be notify when command result is available. See command for HMessageDelegate structure.
-
-### GetThreads
-
-_The client MUST be connected_
-
-Demands to the channel the list of convid where there is a hConvState with the status value searched.
-Nominal response : hMessage with hResult where the status is 0 and result is an array of convid.
-
-```java
-public void getThreads(String actor, String status, HMessageDelegate messageDelegate) throws MissingAttrException
-```
-
-Where:
-* actor : The channel id where the conversations are searched. Mandatory.
-* status : Status searched. Mandatory.
-* messageDelegate : Delegate that will be notify when command result is available. See command for HMessageDelegate structure.
-
-### GetRelevantMessages
-
-_The client MUST be connected_
-
-Demands to the channel the list of the available relevant message.
-Nominal response : hMessage with hResult where the status is 0 and result is an array of hMessage.
-
-```java
-public void getRelevantMessages(String actor, HMessageDelegate messageDelegate) throws MissingAttrException
-```
-
-Where:
-* actor : The channel where the relevant messages are searched. Mandatory.
-* messageDelegate : Delegate that will be notify when command result is available. See command for HMessageDelegate structure.
 
 ### SetFilter
 

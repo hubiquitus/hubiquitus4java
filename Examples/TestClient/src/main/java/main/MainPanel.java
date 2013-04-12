@@ -76,7 +76,6 @@ public class MainPanel extends JPanel implements HStatusDelegate,
 	private JTextField endPointField = new JTextField("http://localhost:8080");
 	private JTextField actorField = new JTextField("urn:localhost:testChannel");
 	private JTextField messageField = new JTextField("test");
-	private JTextField nbLastMessagesField = new JTextField("");
 	private JTextField convidField = new JTextField("");
 	private JTextField convstateField = new JTextField("");
 	private JTextField relevantField = new JTextField("");
@@ -149,8 +148,6 @@ public class MainPanel extends JPanel implements HStatusDelegate,
 		// paramsPanel.add(serverPortField);
 		paramsPanel.add(new JLabel("Actor"));
 		paramsPanel.add(actorField);
-		paramsPanel.add(new JLabel("nbLastMessages"));
-		paramsPanel.add(nbLastMessagesField);
 		paramsPanel.add(new JLabel("Message"));
 		paramsPanel.add(messageField);
 		paramsPanel.add(new JLabel("convid"));

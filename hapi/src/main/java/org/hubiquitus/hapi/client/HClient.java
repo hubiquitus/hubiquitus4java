@@ -89,7 +89,9 @@ public class HClient {
 		return this.transportOptions.getFullUrn();
 	}
 
-
+    public String getBareURN(){
+		return this.transportOptions.getFullUrn().split("/")[0];
+	}
 
 	public String getResource() {
 		return this.transportOptions.getResource();
@@ -384,7 +386,6 @@ public class HClient {
 
 		// build the message
 		HMessage hmessage = new HMessage();
-
 		hmessage.setActor(actor);
 		hmessage.setType(type);
 		if (options != null) {

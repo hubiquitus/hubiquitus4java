@@ -1,4 +1,9 @@
-## Intstallation of hAPI
+## Installation of hAPI (Sources)
+
+###Eclipse
+
+1. Add the maven plugin for eclipse
+2. import -> Existing Maven Project
 
 ### Windows 
 

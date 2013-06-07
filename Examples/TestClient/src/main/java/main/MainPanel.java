@@ -76,7 +76,6 @@ public class MainPanel extends JPanel implements HStatusDelegate,
 	private JTextField endPointField = new JTextField("http://localhost:8080");
 	private JTextField actorField = new JTextField("urn:localhost:testChannel");
 	private JTextField messageField = new JTextField("test");
-	private JTextField convstateField = new JTextField("");
 	private JTextField relevantField = new JTextField("");
 	private JTextField timeoutField = new JTextField("");
 	private JTextField filterNameField = new JTextField("");
@@ -149,8 +148,6 @@ public class MainPanel extends JPanel implements HStatusDelegate,
 		paramsPanel.add(actorField);
 		paramsPanel.add(new JLabel("Message"));
 		paramsPanel.add(messageField);
-		paramsPanel.add(new JLabel("status"));
-		paramsPanel.add(convstateField);
 		paramsPanel.add(new JLabel("relevant"));
 		paramsPanel.add(relevantField);
 		paramsPanel.add(new JLabel("timeout"));
@@ -180,7 +177,6 @@ public class MainPanel extends JPanel implements HStatusDelegate,
 		controlsPanel.add(unsubscribeButton);
 		// controlsPanel.add(publishButton);
 		controlsPanel.add(getSubscriptionsButton);
-		controlsPanel.add(pubConvStateButton);
 		controlsPanel.add(setFilterButton);
 //		controlsPanel.add(listFiltersButton);
 		controlsPanel.add(unsetFilterButton);

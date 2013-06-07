@@ -35,6 +35,14 @@ Then install hAPI and HubotSDK :
 
 ## How to use
 
+### How to compile the jar file using maven
+
+- Install maven
+```sudo apt-get install maven```
+- Access your app directory "hapi", near the pom.xml and execute the following command:
+```mvn package```
+- Then, you'll find your jar file in app_folder/target/
+
 ### How to use hAPI
 
 Add the ```hAPI-0.6.0.jar``` in _C:\Users\[your account]\.m2\repository\org\hubiquitus\hubiquitus4java\hAPI\0.6.0_ to your project library

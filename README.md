@@ -15,8 +15,6 @@ The source code of the Hubiquitus4Java hAPI itself is in the `hAPI` subdirectory
 
 The source code of the Hubiquitus4Java components is in the `HubiquitusComponents` subdirectory of this repo.
 
-The source code of the Hubiquitus4Java HubotSDK is in the `HubotsSDK` subdirectory of this repo.
-
 
 ## Issues
 

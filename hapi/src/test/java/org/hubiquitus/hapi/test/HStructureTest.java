@@ -32,16 +32,11 @@ import java.util.Date;
 
 import org.hubiquitus.hapi.hStructures.ConnectionError;
 import org.hubiquitus.hapi.hStructures.ConnectionStatus;
-import org.hubiquitus.hapi.hStructures.HAck;
-import org.hubiquitus.hapi.hStructures.HAckValue;
-import org.hubiquitus.hapi.hStructures.HAlert;
 import org.hubiquitus.hapi.hStructures.HArrayOfValue;
 import org.hubiquitus.hapi.hStructures.HCommand;
 import org.hubiquitus.hapi.hStructures.HCondition;
-import org.hubiquitus.hapi.hStructures.HConvState;
 import org.hubiquitus.hapi.hStructures.HGeo;
 import org.hubiquitus.hapi.hStructures.HLocation;
-import org.hubiquitus.hapi.hStructures.HMeasure;
 import org.hubiquitus.hapi.hStructures.HMessage;
 import org.hubiquitus.hapi.hStructures.HMessagePriority;
 import org.hubiquitus.hapi.hStructures.HResult;
@@ -212,40 +207,6 @@ public class HStructureTest {
 		}
 	}
 	
-	//HConv test
-	@Test
-	public void HConvStateGetTest() {
-		JSONObject jsonObj = new JSONObject();
-		try {
-			String status = "test";
-			jsonObj.put("status", status);
-			
-			HConvState hconvstate = new HConvState(jsonObj);
-			Assert.assertEquals(hconvstate.getStatus(), status);
-		} catch (JSONException e) {
-			e.printStackTrace();
-			fail("fail");
-		}
-	}
-	
-	@Test
-	public void HConvStateSetTest() {
-		JSONObject jsonObj = new JSONObject();
-		try {
-			String status = "test";
-			
-			HConvState hconvstate = new HConvState();
-			hconvstate.setStatus(status);
-			
-			jsonObj = hconvstate;
-			
-			Assert.assertEquals(jsonObj.get("status"), status);
-		} catch (Exception e) {
-			e.printStackTrace();
-			fail("fail");
-		}
-	}
-	
 	//HLocation test
 	@Test
 	public void HlocationGetTest() {
@@ -358,39 +319,6 @@ public class HStructureTest {
 		}
 	}
 	
-	//HAck test
-	@Test
-	public void HAckSetTest() {
-		JSONObject jsonObj = new JSONObject();
-		try {
-			String ack = "read";
-			jsonObj.put("ack", ack);
-
-			HAck hack = new HAck(jsonObj);
-
-			Assert.assertEquals(hack.getAck(), HAckValue.READ);
-		} catch (JSONException e) {
-			e.printStackTrace();
-			fail("fail");
-		}
-	}
-	
-	@Test
-	public void HAckGetTest() {
-		JSONObject jsonObj = new JSONObject();
-		try {
-			HAckValue ack = HAckValue.READ;			
-						
-			HAck hack = new HAck();
-			hack.setAck(ack);
-			
-			jsonObj = hack;
-			Assert.assertEquals(jsonObj.get("ack"), ack.value());
-		} catch (Exception e) {
-			e.printStackTrace();
-			fail("fail");
-		}
-	}
 	
 	//HCommand test
 	@Test
@@ -436,83 +364,7 @@ public class HStructureTest {
 		} 
 	}
 	
-	//HAlert test
-	@Test
-	public void HAlertSetTest() {
-		JSONObject jsonObj = new JSONObject();
-		try {
-			String alert = "Failure";
-			jsonObj.put("alert", alert);
-						
-			HAlert halert = new HAlert(jsonObj);
 
-			Assert.assertEquals(halert.getAlert(), alert);
-		} catch (JSONException e) {
-			e.printStackTrace();
-			fail("fail");
-		}
-	}
-	
-	@Test
-	public void HAlertGetTest() {
-		JSONObject jsonObj = new JSONObject();
-		try {
-			String alert = "warning";
-						
-			HAlert halert = new HAlert();
-			halert.setAlert(alert);
-			
-			jsonObj = halert;
-			
-			Assert.assertEquals(jsonObj.get("alert"), alert);
-		} catch (Exception e) {
-			e.printStackTrace();
-			fail("fail");
-		}
-	}
-
-	//HMeasure test
-	@Test
-	public void HMeasureSetTest() {
-		JSONObject jsonObj = new JSONObject();
-		try {
-			String unit = "metre";
-			jsonObj.put("unit", unit);
-			
-			String value ="17";
-			jsonObj.put("value", value);
-						
-			HMeasure hmeasure = new HMeasure(jsonObj);
-
-			Assert.assertEquals(hmeasure.getUnit(), unit);
-			Assert.assertEquals(hmeasure.getValue(), value);
-		} catch (JSONException e) {
-			e.printStackTrace();
-			fail("fail");
-		}
-	}
-	
-	@Test
-	public void HMeasureGetTest() {
-		JSONObject jsonObj = new JSONObject();
-		try {
-			String unit = "metre";
-			
-			String value ="17";
-						
-			HMeasure hmeasure = new HMeasure();
-			hmeasure.setUnit(unit);
-			hmeasure.setValue(value);
-			jsonObj = hmeasure;
-
-			Assert.assertEquals(jsonObj.get("unit"), unit);
-			Assert.assertEquals(jsonObj.get("value"), value);
-		} catch (Exception e) {
-			e.printStackTrace();
-			fail("fail");
-		}
-	}
-	
 	//HStatus test
 	@Test
 	public void HStatusSetTest() {

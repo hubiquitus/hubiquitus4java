@@ -19,15 +19,12 @@ Hubiquitus defines a set of basic data structure used to express elementary piec
   - hAck
   - hConvState
   - hTweet
-  - hHTTPData
+  - hHTTPMessage
 * Metadata
   - hHeader
   - hLocation
 * Filter
   - hCondition
-
-
-
 
 ##Messages
 

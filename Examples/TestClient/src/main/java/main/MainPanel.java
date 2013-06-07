@@ -76,8 +76,6 @@ public class MainPanel extends JPanel implements HStatusDelegate,
 	private JTextField endPointField = new JTextField("http://localhost:8080");
 	private JTextField actorField = new JTextField("urn:localhost:testChannel");
 	private JTextField messageField = new JTextField("test");
-	private JTextField convidField = new JTextField("");
-	private JTextField convstateField = new JTextField("");
 	private JTextField relevantField = new JTextField("");
 	private JTextField timeoutField = new JTextField("");
 	private JTextField filterNameField = new JTextField("");
@@ -150,10 +148,6 @@ public class MainPanel extends JPanel implements HStatusDelegate,
 		paramsPanel.add(actorField);
 		paramsPanel.add(new JLabel("Message"));
 		paramsPanel.add(messageField);
-		paramsPanel.add(new JLabel("convid"));
-		paramsPanel.add(convidField);
-		paramsPanel.add(new JLabel("status"));
-		paramsPanel.add(convstateField);
 		paramsPanel.add(new JLabel("relevant"));
 		paramsPanel.add(relevantField);
 		paramsPanel.add(new JLabel("timeout"));
@@ -183,7 +177,6 @@ public class MainPanel extends JPanel implements HStatusDelegate,
 		controlsPanel.add(unsubscribeButton);
 		// controlsPanel.add(publishButton);
 		controlsPanel.add(getSubscriptionsButton);
-		controlsPanel.add(pubConvStateButton);
 		controlsPanel.add(setFilterButton);
 //		controlsPanel.add(listFiltersButton);
 		controlsPanel.add(unsetFilterButton);
@@ -215,7 +208,6 @@ public class MainPanel extends JPanel implements HStatusDelegate,
 		// publishButton.addMouseListener(new PublishButtonListener());
 		getSubscriptionsButton
 				.addMouseListener(new GetSubscriptionButtonListener());
-		pubConvStateButton.addMouseListener(new PubConvStateButtonListener());
 		setFilterButton.addMouseListener(new SetFilterListener());
 //		listFiltersButton.addMouseListener(new ListFiltersListener());
 		unsetFilterButton.addMouseListener(new UnsetFilterListener());
@@ -378,30 +370,6 @@ public class MainPanel extends JPanel implements HStatusDelegate,
 		}
 	}
 
-	// Listener of button pubConvState
-	class PubConvStateButtonListener extends MouseAdapter {
-		public void mouseClicked(MouseEvent event) {
-			String actor = actorField.getText();
-			String convid = convidField.getText();
-			String status = convstateField.getText();
-			HMessageOptions msgOptions = new HMessageOptions();
-
-			if (persistentRadioButton.isSelected())
-				msgOptions.setPersistent(true);
-			else
-				msgOptions.setPersistent(false);
-
-			try {
-				HMessage pubMsg = client.buildConvState(actor, convid, status,
-						msgOptions);
-				pubMsg.setTimeout(30000);
-				client.send(pubMsg, outerClass);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-	}
-
 	// Listener of button setFilter
 	class SetFilterListener extends MouseAdapter {
 		 public void mouseClicked(MouseEvent event) {
@@ -481,6 +449,7 @@ public class MainPanel extends JPanel implements HStatusDelegate,
 	public void onStatus(HStatus status) {
 		System.out.println("--> status : " + status.getStatus());
 		System.out.println("--> fullUrn : " + client.getFullUrn());
+		System.out.println("--> BareUrn : " + client.getBareURN());
 		System.out.println("--> resource : " + client.getResource());
 		this.setStatusArea("hstatus");
 		this.addTextArea(status.toString());
